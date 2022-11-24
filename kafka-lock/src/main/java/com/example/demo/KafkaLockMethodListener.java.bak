@@ -1,0 +1,29 @@
+package com.nationz.core.kafka;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.handler.annotation.Payload;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
+@Service
+public class KafkaLockMethodListener {
+
+    private static final Logger LOG = LoggerFactory.getLogger(KafkaLockMethodListener.class);
+
+    /*@KafkaListener(id = "${kafka.groupLock}", topics = "${kafka.topicLock}", containerFactory = "kafkaListenerLockBatchContainerFactory")  
+    public void receive(@Payload List<String> messages) {
+
+        LOG.info("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -");
+        LOG.info("Starting the process to recieve batch messages");
+
+        for (int i = 0; i < messages.size(); i++) {
+            LOG.info("received message='{}'", messages.get(i));
+
+        }
+        LOG.info("all the batch messages are consumed");
+    }*/
+
+}

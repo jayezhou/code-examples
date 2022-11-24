@@ -1,0 +1,25 @@
+#spring:
+#  kafka:
+#    producer:
+#      bootstrap-servers: 1.1.1.1:6001
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      properties:
+#        sasl.mechanism: PLAIN
+#        security.protocol: SASL_PLAINTEXT
+##        sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username=${KAFKA-USER} password=${KAFKA-PASSWORD};
+#        sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="username" password="password";
+#    consumer:
+#      bootstrap-servers: 1.14.227.149:6001
+#      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+#      properties:
+#        sasl.mechanism: PLAIN
+#        security.protocol: SASL_PLAINTEXT
+##        sasl.jaas.config: org.apache.kafka.common.security.scram.ScramLoginModule required username=admin password=admin-secret;
+#        sasl.jaas.config: org.apache.kafka.common.security.plain.PlainLoginModule required username="username" password="password";
+#      group-id: lockGroup
+
+# Tomcat
+server:
+  port: 9093
