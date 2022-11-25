@@ -1,0 +1,16 @@
+global:
+  resolve_timeout: 1m
+  smtp_from: '12345@qq.com'
+  smtp_smarthost: 'smtp.qq.com:465'
+  smtp_auth_username: '12345@qq.com'
+  smtp_auth_password: 'pityk......'
+  smtp_require_tls: false
+
+route:
+  receiver: 'mail-notifications'
+
+receivers:
+- name: 'mail-notifications'
+  email_configs:
+  - to: 'jaye@xx.com, jack@qq.com'
+    send_resolved: true

@@ -1,0 +1,11 @@
+groups:
+  - name: default
+    rules:
+      - alert: service_down
+        expr: up{job="spring-actuator"} == 0
+        for: 5m
+        labels:
+          severity: major
+        annotations:
+          description: Service {{ $labels.instance }} is unavailable.
+          value: DOWN ({{ $value }})
