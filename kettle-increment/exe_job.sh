@@ -1,0 +1,1 @@
+/opt/data-integration/kitchen.sh -file jb_increment.kjb
