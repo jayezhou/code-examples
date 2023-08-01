@@ -1,0 +1,7 @@
+==================== For Positive Pairs ====================
+One People Number: 0
+Positive Pair Number: 3696
+Maximum similarity value: 0.9501898771651265
+Mean similarity value: 0.16704309539338796
+Minute similarity value: -0.21820083542837124
+Std of similarity value: 0.24792367288515246
