@@ -44,37 +44,56 @@ def align(original_image):
     # alignment
     face_align = FaceAlignment()
     lnk = landmarks.reshape((-1,5,2), order='F').astype(int)[0] # The first landmark
+    print(lnk)
     warp_image = face_align(image, lnk)
     #print(warp_image)
     return warp_image
 
 
-def imshow(img):
-    """
-    jupyter imshow
-    """
-    plt.figure(dpi=50)
-    plt.axis('off')
-    img = img[:,:,::-1] 	# transform image to rgb
-    plt.imshow(img)
-    plt.show()
+# def imshow(img):
+#     """
+#     jupyter imshow
+#     """
+#     plt.figure(dpi=50)
+#     plt.axis('off')
+#     img = img[:,:,::-1] 	# transform image to rgb
+#     plt.imshow(img)
+#     plt.show()
     
-
-if __name__ == "__main__":
-    imgpath = './demo_imgs/test_img.jpeg'                         # [1,2,3.jpg]
-    device = 'cpu'                                        # 'cpu' or 'cuda:x'
+def eval(img):
     eval_model = './model/SDD_FIQA_checkpoints_r50.pth'   # checkpoint
+    device = 'cpu'                                        # 'cpu' or 'cuda:x'
     net = network(eval_model, device)
-    
-    #original_image = Image.open(imgpath)
-    original_image = Image.open(imgpath).convert('RGB')
-    warp_image = align(original_image)
+    warp_image = align(img)
     if type(warp_image) == type(None):
-        print(f"Quality score = 0")
-        sys.exit(0)
-    #imshow(warp_image)
-    
+        return 0
     warp_image_pil = Image.fromarray(cv2.cvtColor(warp_image,cv2.COLOR_BGR2RGB))    
     input_data = read_img(warp_image_pil)
     pred_score = net(input_data).data.cpu().numpy().squeeze()
+    return pred_score
+
+
+if __name__ == "__main__":    
+    imgpath = './demo_imgs/a.jpg'                         # [1,2,3.jpg]
+    image = Image.open(imgpath).convert('RGB')
+    pred_score = eval(image)
     print(f"Quality score = {pred_score}")
+
+# if __name__ == "__main__":
+#     imgpath = './demo_imgs/112.jpg'                         # [1,2,3.jpg]
+#     device = 'cpu'                                        # 'cpu' or 'cuda:x'
+#     eval_model = './model/SDD_FIQA_checkpoints_r50.pth'   # checkpoint
+#     net = network(eval_model, device)
+    
+#     #original_image = Image.open(imgpath)
+#     original_image = Image.open(imgpath).convert('RGB')
+#     warp_image = align(original_image)
+#     if type(warp_image) == type(None):
+#         print(f"Quality score = 0")
+#         sys.exit(0)
+#     #imshow(warp_image)
+    
+#     warp_image_pil = Image.fromarray(cv2.cvtColor(warp_image,cv2.COLOR_BGR2RGB))    
+#     input_data = read_img(warp_image_pil)
+#     pred_score = net(input_data).data.cpu().numpy().squeeze()
+#     print(f"Quality score = {pred_score}")

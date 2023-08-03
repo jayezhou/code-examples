@@ -1,0 +1,4 @@
+### VS Code ###
+.vscode/
+
+model/SDD_FIQA_checkpoints_r50.pth

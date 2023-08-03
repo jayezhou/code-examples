@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+   <head>
+   </head>
+   <body>
+      <form method="post" action="/fiqaByForm" enctype="multipart/form-data">
+         <p><input type="file" id="fileInput" name="img"></p>
+         <p><input type="submit" value="Submit"></p>
+      </form>
+      <p><input type="button" value="Base64" onclick="evalBase64()"></p>
+      <script type="text/javascript">
+         function evalBase64() {
+            let fileInput = document.getElementById('fileInput');
+            let file = fileInput.files[0];
+            // let canvas = document.createElement("canvas"); 
+            // canvas.width = file.width;
+            // canvas.height = file.height;
+            // let ctx = canvas.getContext("2d");
+            // ctx.drawImage(file, 0, 0, file.width, file.height);
+            // let ext = file.src.substring(file.src.lastIndexOf(".") + 1).toLowerCase();
+            // let dataURL = canvas.toDataURL("image/jpeg" + ext);
+            let reader = new FileReader();
+            let image = null;
+            reader.onload = function(event) {
+               const image = event.target.result;
+               //console.log(image);
+
+               let xhr = new XMLHttpRequest();
+               xhr.open('POST', '/fiqaByBase64', true);
+               xhr.setRequestHeader('Content-Type', 'application/json');
+               let data = {img: image};
+               xhr.send(JSON.stringify(data));
+               xhr.onload = function() {
+                  if (xhr.status === 200) {
+                     console.log(xhr.responseText);
+                  } else {
+                     console.log('Error: ' + xhr.status);
+                  }
+               };         
+             };
+            reader.readAsDataURL(file);
+         }
+      </script>
+   </body>
+</html>

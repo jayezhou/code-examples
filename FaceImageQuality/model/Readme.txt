@@ -1,0 +1,1 @@
+把从 https://drive.google.com/file/d/1AM0iWVfSVWRjCriwZZ3FXiUGbcDzkF25/view?usp=sharing 下载的 SDD_FIQA_checkpoints_r50.pth 文件放在这里。
