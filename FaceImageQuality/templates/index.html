@@ -3,12 +3,28 @@
    <head>
    </head>
    <body>
-      <form method="post" action="/fiqaByForm" enctype="multipart/form-data">
+      <form id="imgForm" method="post" action="/fiqaByForm" enctype="multipart/form-data">
          <p><input type="file" id="fileInput" name="img"></p>
-         <p><input type="submit" value="Submit"></p>
       </form>
+      <p><input type="button" value="Form" onclick="evalForm()"></p>
       <p><input type="button" value="Base64" onclick="evalBase64()"></p>
+      <div id="score"></div>
       <script type="text/javascript">
+         function evalForm() {
+            let formData = new FormData(document.getElementById('imgForm'));
+            let xhr = new XMLHttpRequest();
+            xhr.open('POST', '/fiqaByForm', true);
+            xhr.send(formData);
+            xhr.onload = function() {
+               if (xhr.status === 200) {
+                  console.log(xhr.responseText);
+                  let jsObj = JSON.parse(xhr.responseText);
+                  document.getElementById('score').textContent = jsObj.score;
+               } else {
+                  console.log('Error: ' + xhr.status);
+               }
+            };         
+         }
          function evalBase64() {
             let fileInput = document.getElementById('fileInput');
             let file = fileInput.files[0];
@@ -33,6 +49,8 @@
                xhr.onload = function() {
                   if (xhr.status === 200) {
                      console.log(xhr.responseText);
+                     let jsObj = JSON.parse(xhr.responseText);
+                     document.getElementById('score').textContent = jsObj.score;
                   } else {
                      console.log('Error: ' + xhr.status);
                   }

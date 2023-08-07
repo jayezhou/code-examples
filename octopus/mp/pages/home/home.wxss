@@ -1,4 +1,42 @@
-.intro {
-  margin: 30px;
-  text-align: center;
+.map {
+  height: 100vh;
+  width: 100vw;
+}
+
+.dialog-container {
+  background-color: #000000;
+  position: absolute;
+  height: 0vh; /* 80vh */
+  width: 100vw;
+  top: 1100rpx;    /* 20vh */
+}
+
+.dialog-main {
+  background-color: #808080;
+  width: 100vw;
+  height: 70vh;
+  top: 800rpx;
+  box-sizing: border-box;
+  padding-bottom: 98rpx;
+  z-index: 10;
+}
+
+.dialog-main .box-child {
+  height: 80vh;   /* height: 20vh; */
+  background-color: #ffffff;
+  border-radius: 20rpx 20rpx 0 0;
+  box-shadow: 0 -4rpx 16rpx 0 rgba(0,0,0,.08);
+}
+
+.dialog-main .show-all-btn {
+  height: 32rpx;
+  padding-top: 16rpx;
+}
+
+.dialog-main .show-all-btn .btn {
+  background: rgba(0,0,0,.15);
+  border-radius: 4rpx;
+  height: 8rpx;
+  margin: 0 auto;
+  width: 64rpx;
 }

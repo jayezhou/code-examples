@@ -51,7 +51,7 @@ class Evaluator():
         # alignment
         face_align = FaceAlignment()
         lnk = landmarks.reshape((-1,5,2), order='F').astype(int)[0] # The first landmark
-        print(lnk)
+        # print(lnk)
         warp_image = face_align(image, lnk)
         #print(warp_image)
         return warp_image
