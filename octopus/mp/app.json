@@ -1,6 +1,7 @@
 {
   "pages": [
     "pages/home/home",
+    "pages/scan/scan",
     "pages/user/user"
   ],
   "window": {
@@ -15,6 +16,11 @@
       "text": "首页",
       "iconPath": "/static/image/home.png",
       "selectedIconPath": "/static/image/home-active.png"
+    },{
+      "pagePath": "pages/scan/scan",
+      "text": "扫码",
+      "iconPath": "/static/image/scan.png",
+      "selectedIconPath": "/static/image/scan-active.png"
     },{
       "pagePath": "pages/user/user",
       "text": "我的",
