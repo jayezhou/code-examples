@@ -8,7 +8,7 @@
     </appender>
     <logger name="com.tpzwl.octopus" level="DEBUG"></logger>
     <logger name="org.springframework.context" level="DEBUG"></logger>
-    <root level="info">
+    <root level="DEBUG">
         <appender-ref ref="STDOUT" />
     </root>
 </configuration>

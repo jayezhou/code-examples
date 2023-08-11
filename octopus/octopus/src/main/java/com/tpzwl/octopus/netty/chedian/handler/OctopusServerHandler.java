@@ -46,7 +46,7 @@ public class OctopusServerHandler extends ChannelInboundHandlerAdapter {
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         //Assert.notNull(this.channelRepository, "[Assertion failed] - ChannelRepository is required; it must not be null");
-    	ctx.channel().attr(REMAINING_BUFFER_ATTRIBUTE_KEY).set(ctx.alloc().buffer());	// 因为TCP的粘包和拆包，把读入的包先放在这里再进行处理
+    	//ctx.channel().attr(REMAINING_BUFFER_ATTRIBUTE_KEY).set(ctx.alloc().buffer());	// 因为TCP的粘包和拆包，把读入的包先放在这里再进行处理
     	
         ctx.fireChannelActive();
         if (log.isDebugEnabled()) {
@@ -54,16 +54,16 @@ public class OctopusServerHandler extends ChannelInboundHandlerAdapter {
         }
         String remoteAddress = ctx.channel().remoteAddress().toString();
 
-        ctx.writeAndFlush("Your remote address is " + remoteAddress + ".\r\n");
+        //ctx.writeAndFlush("Your remote address is " + remoteAddress + ".\r\n");
     }
     
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) {    	
     	ByteBuf byteBufRead = (ByteBuf) msg;   	
         //String stringMessage = (String) msg;
-        if (log.isDebugEnabled()) {
-            log.debug("in: " + ByteBufUtil.hexDump((ByteBuf) msg));
-        }
+         log.info("in: " + ByteBufUtil.hexDump((ByteBuf) msg));
+        
+        ctx.writeAndFlush(byteBufRead);
     }
 
     /*
