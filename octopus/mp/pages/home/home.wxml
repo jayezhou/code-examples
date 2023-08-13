@@ -11,25 +11,32 @@
         <view class="head">
           <view bindtap="" class="city">
             <text>深圳市</text>
-            <image class="arrow-down-icon" src=""></image>
+            <image class="arrow-down-icon" src="../../static/image/arrow-down.png"></image>
           </view>
           <view class="power-station-search">
-            <search-input compid=""></search-input>
+            <view class="search-input-container" >
+              <input class="search-input" confirmType="search" placeholder="输入目的地/充电站搜索" ></input>
+            </view>
           </view>
-          <view bindtap="" class="notification-center">
+          <!-- <view bindtap="" class="notification-center">
             <badge compid="">
               <image class="notification-icon" src=""></image>
             </badge>
-          </view>
+          </view> -->
         </view>
         <view class="map-banner-container">
           <banner compid=""></banner>
         </view>
         <view class="activity">
-          <swiper>
+          <swiper autoplay="true" circular="true" class="test-h" indicatorActiveColor="#333" indicatorColor="#999" indicatorDots="true">
             <swiper-item >
               <view bindtap="" class="" data-e-tap-a-a="" data-e-tap-so="">
-              活动
+                <image src="../../static/image/22-35-35.png"></image>
+              </view>
+            </swiper-item>
+            <swiper-item >
+              <view bindtap="" class="" data-e-tap-a-a="" data-e-tap-so="">
+                <image src="../../static/image/22-35-42.png"></image>
               </view>
             </swiper-item>
           </swiper>

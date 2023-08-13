@@ -28,15 +28,80 @@
   box-shadow: 0 -4rpx 16rpx 0 rgba(0,0,0,.08);
 }
 
-.dialog-main .show-all-btn {
+.dialog-main .box-child .show-all-btn {
   height: 32rpx;
   padding-top: 16rpx;
 }
 
-.dialog-main .show-all-btn .btn {
+.dialog-main .box-child .show-all-btn .btn {
   background: rgba(0,0,0,.15);
   border-radius: 4rpx;
   height: 8rpx;
   margin: 0 auto;
   width: 64rpx;
+}
+
+.dialog-main .box-child .head {
+  justify-content: space-between;
+  padding: 23rpx 34rpx;
+}
+
+.dialog-main .box-child .head .city {
+  align-items: center;
+  display: inline-flex;
+}
+
+.dialog-main .box-child .head .arrow-down-icon {
+  height: 40rpx;
+  width: 40rpx;
+}
+
+.dialog-main .box-child .head .power-station-search {
+  flex: 1;
+  display: inline-flex;
+  margin: -14rpx 8rpx -14rpx -20rpx;
+}
+
+.dialog-main .box-child .head .power-station-search .search-input-container {
+  background: #fff;
+  box-sizing: border-box;
+  color: #242424;
+  height: 60rpx;
+  margin: 14rpx 32rpx;
+  position: relative;
+}
+
+.dialog-main .box-child .head .power-station-search .search-input-container .search-input {
+  background: #f8f8f8;
+  border-radius: 30rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding: 0 72rpx;
+}
+
+.dialog-main .box-child .activity {
+  justify-content: space-between;
+  padding: 23rpx 34rpx;
+}
+
+/* .dialog-main .box-child .activity {
+  background-position: 32rpx 12rpx;
+  background-repeat: no-repeat;
+  background-size: 32rpx 32rpx;
+  color: #242424;
+  font-family: PingFangSC-Regular;
+  font-size: 28rpx;
+  opacity: .83;
+  padding-bottom: 16rpx;
+  padding-left: 72rpx;
+  padding-top: 8rpx;
+} */
+
+.activity .test-h {
+  height: 42rpx!important;
+}
+
+.activity .at-noticebar {
+  background-color: initial;
+  color: #242424;
 }
