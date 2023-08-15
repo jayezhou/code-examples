@@ -28,15 +28,15 @@
           <banner compid=""></banner>
         </view>
         <view class="activity">
-          <swiper autoplay="true" circular="true" class="test-h" indicatorActiveColor="#333" indicatorColor="#999" indicatorDots="true">
+          <swiper style="height: calc(750rpx * 80/702);" autoplay="true" circular="true" class="test-h" indicatorActiveColor="#333" indicatorColor="#999" indicatorDots="true">
             <swiper-item >
-              <view bindtap="" class="" data-e-tap-a-a="" data-e-tap-so="">
-                <image src="../../static/image/22-35-35.png"></image>
+              <view>
+                <image mode="widthFix" style="width: 100%;" src="../../static/image/22-35-35.png"></image>
               </view>
             </swiper-item>
             <swiper-item >
-              <view bindtap="" class="" data-e-tap-a-a="" data-e-tap-so="">
-                <image src="../../static/image/22-35-42.png"></image>
+              <view>
+                <image mode="widthFix" style="width: 100%;" src="../../static/image/22-35-42.png"></image>
               </view>
             </swiper-item>
           </swiper>
