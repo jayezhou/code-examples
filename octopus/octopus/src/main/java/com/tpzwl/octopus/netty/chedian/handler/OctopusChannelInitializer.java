@@ -18,8 +18,11 @@ package com.tpzwl.octopus.netty.chedian.handler;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.ChannelPipeline;
 import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
+//import io.netty.handler.codec.LengthFieldBasedFrameDecoder;
 import lombok.RequiredArgsConstructor;
+
+import java.nio.ByteOrder;
+
 import org.springframework.stereotype.Component;
 
 /**
@@ -40,7 +43,8 @@ public class OctopusChannelInitializer extends ChannelInitializer<SocketChannel>
         ChannelPipeline pipeline = socketChannel.pipeline();
 
         // Add the text line codec combination first,
-        pipeline.addLast(new LengthFieldBasedFrameDecoder(Integer.MAX_VALUE, 1, 1, 1, 0));
+        //pipeline.addLast(new LengthFieldBasedFrameDecoder(0xffff, 1, 1, 1, 0));
+        pipeline.addLast(new LengthFieldAndStartFlagBasedFrameDecoder(ByteOrder.BIG_ENDIAN, 0xffff, 1, 1, 1, 0, true, (byte)0x00, (byte)0x68));
 
         //pipeline.addLast(stringDecoder);
         //pipeline.addLast(stringEncoder);
