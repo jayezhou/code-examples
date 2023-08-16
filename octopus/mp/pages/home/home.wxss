@@ -105,7 +105,40 @@
   /* height: 42px!important; */
 }
 
-.activity .at-noticebar {
-  background-color: initial;
-  color: #242424;
+.dialog-main .box-child .icon-menu .container {
+    background-color: #fff;
+    padding-bottom: 20rpx;
+}
+
+.dialog-main .box-child .icon-menu .container .icon-box {
+    overflow: scroll;
+    width: 100vw;
+}
+
+.dialog-main .box-child .icon-menu .container .icon-box .icon-ul {
+    align-items: center;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10rpx 0;
+    width: fit-content;
+}
+
+.dialog-main .box-child .icon-menu .container .icon-ul .icon-li {
+    flex-direction: column;
+    justify-content: space-between;
+    width: 150rpx;
+}
+
+.dialog-main .box-child .icon-menu .container .icon-ul .icon-li .tab-bar-icon {
+    height: 72rpx;
+    margin: 10rpx 0 0 4rpx;
+    width: 72rpx;
+}
+
+.dialog-main .box-child .icon-menu .container .icon-ul .icon-li text {
+    color: rgba(36,36,36,.83);
+    font-family: PingFangSC-Regular;
+    font-size: 28rpx;
+    text-align: center;
+    width: 150rpx;
 }

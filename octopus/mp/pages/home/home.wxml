@@ -42,7 +42,34 @@
           </swiper>
         </view>
         <view class="icon-menu">
-          <icon-menu compid=""></icon-menu>
+          <view class="container">
+			<scroll-view class="icon-box" scrollX="true">
+			  <view class="icon-ul">
+				<block>
+				  <view class="icon-li">
+					<image class="tab-bar-icon" src="../../static/image/charging-station.png"></image>
+					<text>电站</text>
+				  </view>
+				  <view class="icon-li">
+					<image class="tab-bar-icon" src="../../static/image/car.png"></image>
+					<text>爱车</text>
+				  </view>
+				  <view class="icon-li">
+					<image class="tab-bar-icon" src="../../static/image/wallet.png"></image>
+					<text>钱包</text>
+				  </view>
+				  <view class="icon-li">
+					<image class="tab-bar-icon" src="../../static/image/diamond.png"></image>
+					<text>会员</text>
+				  </view>
+				  <view class="icon-li">
+					<image class="tab-bar-icon" src="../../static/image/phone.png"></image>
+					<text>客服</text>
+				  </view>
+				</block>
+			  </view>
+			</scroll-view>		  		  
+		  </view>
         </view>
         <view class="re-box">
           <view class="re-title">南网推荐电站</view>
