@@ -1,0 +1,341 @@
+@-webkit-keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    50% {
+        transform: rotate(180deg);
+    }
+
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+.charging-station-summary {
+    background: 0 0;
+    box-sizing: border-box;
+    color: #242424;
+    display: flex;
+    flex-direction: column;
+    font-size: 24rpx;
+    padding: 24rpx 32rpx 30rpx;
+    position: relative;
+    width: 100%;
+}
+
+.charging-station-summary .float-tags-wrapper {
+    display: flex;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.charging-station-summary .float-tags-wrapper .float-tag {
+    align-items: center;
+    box-shadow: inset 0 -2rpx 3rpx 0 rgba(0,0,0,.1);
+    color: #fff;
+    display: flex;
+    font-size: 22rpx;
+    font-weight: 700;
+    height: 40rpx;
+    justify-content: center;
+    width: 46rpx;
+}
+
+.charging-station-summary .float-tags-wrapper .discount {
+    background-image: linear-gradient(41deg,#fe832f 9%,#e0583f 86%);
+}
+
+.charging-station-summary .float-tags-wrapper .recommend {
+    background-image: linear-gradient(225deg,#26b5b8 8%,#4de2be);
+}
+
+.charging-station-summary .float-tags-wrapper :first-child {
+    border-bottom-left-radius: 8rpx;
+}
+
+.charging-station-summary .recommend-tags-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    height: 42rpx;
+    overflow: hidden;
+}
+
+.charging-station-summary .recommend-tags-wrapper .recommend-tag {
+    align-items: center;
+    border: 1px solid rgba(237,185,99,.7);
+    border-radius: 4rpx;
+    box-sizing: border-box;
+    color: #de8c17;
+    display: flex;
+    font-size: 22rpx;
+    justify-content: center;
+    margin-bottom: 10rpx;
+    margin-right: 10rpx;
+    padding: 2rpx 10rpx;
+}
+
+.charging-station-summary .recommend-tags-wrapper .recommend-tag.discount-tag {
+    border: 1px solid rgba(224,88,63,.5);
+    color: #e0583f;
+}
+
+.charging-station-summary .station-name-tags {
+    align-items: center;
+    color: #1b1c39;
+    display: flex;
+    font-size: 34rpx;
+    font-weight: 700;
+    margin-bottom: 2rpx;
+    min-height: 50rpx;
+}
+
+.charging-station-summary .station-name-tags .station-name {
+    word-wrap: break-all;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.charging-station-summary .station-name-tags .station-name.discount {
+    color: #e0583f;
+    margin-left: 12rpx;
+}
+
+.charging-station-summary .station-name-tags .station-name.discount,.charging-station-summary .station-name-tags .station-name.un-business {
+    max-width: 280rpx;
+}
+
+.charging-station-summary .station-name-tags .station-name.discount.un-business {
+    max-width: 370rpx;
+}
+
+.charging-station-summary .station-name-tags .discount-icon {
+    height: auto;
+    width: 75rpx;
+}
+
+.charging-station-summary .station-tag {
+    border-radius: 4rpx;
+    display: inline-block;
+    font-size: 24rpx;
+    height: 32rpx;
+    line-height: 32rpx;
+    padding: 0 8rpx;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.charging-station-summary .station-tag.recommend {
+    background: rgba(224,88,63,.1);
+    color: #e0583f;
+    margin-right: 10rpx;
+}
+
+.charging-station-summary .station-tag.not-business-hour {
+    background: hsla(0,0%,50%,.1);
+    color: #757575;
+    margin-left: 12rpx;
+}
+
+.charging-station-summary .oper-type-name {
+    align-items: center;
+    color: #fff;
+    display: flex;
+    flex-shrink: 0;
+    font-size: 22rpx;
+    font-weight: 700;
+    height: 36rpx;
+    justify-content: center;
+    margin-right: 10rpx;
+    padding: 3rpx 15rpx;
+}
+
+.charging-station-summary .oper-type-name.primary {
+    background: linear-gradient(270deg,#e0583f,#ff771a);
+    border-radius: 4rpx;
+}
+
+.charging-station-summary .oper-type-name.normal {
+    background-color: #df901e;
+    border-radius: 4rpx;
+}
+
+.charging-station-summary .reType {
+    margin: 8rpx 0;
+}
+
+.charging-station-summary .reType .reText {
+    background: rgba(237,185,99,.25);
+    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAADYAAAA2CAMAAAC7m5rvAAABEVBMVEUAAAD+gjD9gTD+gzH/gzD/gy/7fTL/gy/8gDL/hDD/gjL7fjL7fTL/gzfjXD3nYjviWT7pZDr5ezL8fzD2dzP6fTHnYDz7fjHlXzzlXj30dDT4ejL+gi/wbzbrZznzcjXuazj4eTP9gDDqZTrtaTjgWD7ycTb2djTvbTf/7M//6sz/6Mb/7dP/6cntajn/5sP/7tb/4LT/9eb/5L7/9OP/8Nv/9+r/5cD/8t7/79n/47r/4rj/+fL/+O7/9en/8uD5jlD/+/T//Pj5wKD84dL4s4vzmnLwfk/qdE371bv906z7yJ33t5b2oXfykGf72sj4vJHylm3vgVf4iErqbkbze0L5xaX3rYnthWH4kVn4gDwSBWzJAAAADnRSTlMA7sBDJfPY2JqaPfPzJUxfrEgAAALaSURBVEjHzZbXduIwEIYT2Gw2W0LoxaZ3SEwvBgNmQ2/p297/QXYkWQjFlvf4bnX/nW9mpP9ozvBxf/r41SdJ6UAgUIzFYslkoRCPl0qlVEpRcolENuv1ejyeUCgajV5f38BB0DdXOBj0+XxSOn3E4nCASgEFmJdgkQhQiMsD9fncH0achLBikcgKRyyHKS9QRywPtg/nfj9QhiyAsSSmKEZtEcCi1ObKZMCGimS9gYxwCldkiNryZ24546dFYgw4aisRG8OIDNmuAKM2KcD1RjCgCBaiNoRdIswPMsMW43sjWJafJFzAhSyj3sL8BRAbUFyRJyORmc00yRJvi0Bv1CbzIyni5liROcPmYUUyG1BBCXScDYrkR2LGwuxx0UkeHsba7MDuDTC+twwpkvQWM657/x3OdPTERkIo3kZuAF83LvJNA2g61WYUY/d2wxfJnjJgc0RpmjZ6pr2ZR4I5Pm8zAo1Gz5Z5I72Z8rYECFHd7hJGIrCZ8/YTGAR1J4p13gCzyNsMm8bj5lqQNzljkbe5ATWbO0HeZIu8LZpQHkDtdnshyJtsytvbjpiAmvSXgrzJXN5+368fmtQ0mfQ79/jsFtl3eZNP87bvoqaoqd/vdFS1Xq/f3pbXK5u8qay8CUBqRwUGoHK58kOctxcGYRODKnd3K2HedKCOEDLVCYSo6i9h3nQyCR4qY6haXQnzplNINUG1jThvOh2fCar19uK86cSk8lANoFZrJc6b3jkZX4VBQG1t8qaLoMFgYZM3nSsPKAoNhq82edNPbrdKoRZAw0e7vOm0PDaJFjDDRuNglzcdQczUw+UB1Ni82uXtT5kzEQidJ/u8bYDieiLUYwIwm7zpPWziocY88a//7WXbeGfazpf/8f+GMUX0v10I/jfTFsTn7dLqf2OcIvjfrqz/N2az/t/cNG/O9kmyqjnfJ2ExdL5PGmuo830SfC7n+yRdsb842if/AomoW25dfnCHAAAAAElFTkSuQmCC);
+    background-position: 0;
+    background-repeat: no-repeat;
+    background-size: 36rpx 36rpx;
+    border-radius: 6rpx;
+    color: #a65e3a;
+    display: inline-block;
+    font-size: 24rpx;
+    padding: 4rpx 16rpx 4rpx 46rpx;
+}
+
+.charging-station-summary .power-type,.charging-station-summary .price-wrap,.charging-station-summary .rate-and-charging {
+    align-items: center;
+    display: flex;
+}
+
+.charging-station-summary .charged-info {
+    color: #26b5b8;
+    text-decoration: underline;
+}
+
+.charging-station-summary .rate-and-charging .rate-value {
+    margin-left: 10rpx;
+}
+
+.charging-station-summary .no-eva-score {
+    color: #757575;
+}
+
+.charging-station-summary .distance {
+    color: #757575;
+    text-align: right;
+}
+
+.charging-station-summary .operation-time {
+    color: #757575;
+}
+
+.charging-station-summary .charged-info,.charging-station-summary .operation-time {
+    word-wrap: break-all;
+    flex: 1;
+    overflow: hidden;
+    padding-left: 24rpx;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.charging-station-summary .power-type {
+    width: 100%;
+}
+
+.charging-station-summary .power-type .power-item {
+    align-items: center;
+    display: flex;
+    flex: 1 1 140rpx;
+    white-space: nowrap;
+}
+
+.charging-station-summary .power-type .power-item:not(:last-child) {
+    margin-right: 32rpx;
+}
+
+.charging-station-summary .power-type .power-item.parking {
+    overflow: hidden;
+}
+
+.charging-station-summary .power-type .power-item.parking .parking-fee-description {
+    word-wrap: break-all;
+    margin-left: 6rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-break: break-all;
+}
+
+.charging-station-summary .power-type image {
+    height: 40rpx;
+    margin-right: 6rpx;
+    width: 40rpx;
+}
+
+.charging-station-summary .power-type text~image {
+    margin-left: 29rpx;
+}
+
+.charging-station-summary .park-type {
+    margin-top: 12rpx;
+}
+
+.charging-station-summary .price {
+    margin-top: 20rpx;
+}
+
+.charging-station-summary .price .price-value {
+    color: #1b1c39;
+    font-size: 40rpx;
+    font-weight: 700;
+    line-height: 1;
+    margin-right: 7rpx;
+}
+
+.charging-station-summary .price .price-value.discount-price {
+    color: #e0583f;
+}
+
+.charging-station-summary .navigation {
+    align-items: center;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 4rpx 16rpx 6rpx rgba(0,0,0,.13),0 0 12rpx 0 rgba(0,0,0,.1);
+    box-sizing: border-box;
+    display: flex;
+    font-size: 50rpx;
+    height: 90rpx;
+    justify-content: center;
+    width: 90rpx;
+}
+
+.charging-station-summary .navigation-icon {
+    height: auto;
+    width: 30rpx;
+}
+
+.charging-station-summary .bottom-section {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20rpx;
+}
+
+.charging-station-summary .bottom-section .park-tag {
+    width: 100%;
+}
+
+.charging-station-summary .content {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.charging-station-summary .content .content-left {
+    flex: 1;
+    overflow: hidden;
+}
+
+.charging-station-summary .distance-navigation {
+    align-items: flex-end;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 8rpx;
+}
+
+.charging-station-summary .distance-navigation.has-tag {
+    margin-top: 40rpx;
+}

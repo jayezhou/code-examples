@@ -1,4 +1,5 @@
 {
   "usingComponents": {
+    "charging-station-summary": "../../components/ChargingStationSummary/index"
   }
 }

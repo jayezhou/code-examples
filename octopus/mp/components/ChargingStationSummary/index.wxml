@@ -1,0 +1,56 @@
+<view class="charging-station-summary">
+    <view class="float-tags-wrapper">
+        <text class="float-tag discount float-tag-class">惠</text>
+        <text class="float-tag recommend float-tag-class">荐</text>
+    </view>
+    <view class="content">
+        <view class="content-left">
+            <view class="station-name-tags">
+                <text class="oper-type-name normal" wx:if="{{typeCode&&typeCode==='05'}}">私桩</text>
+                <text class="">自营</text>
+                <view class="">修配厂充电站</view>
+                <view class="station-tag not-business-hour">未营业</view>
+            </view>
+            <view class="tag-and-rate">
+                <view class="recommend-tags-wrapper">
+                    <text class="" >recommend-tag</text>
+                </view>
+                <view class="reType">
+                    <view class="reText">recommendTypeText</view>
+                </view>
+                <view class="rate-and-charging">
+                    <block>
+                        <text class="rate-value">3.5</text>
+                    </block>
+                </view>
+            </view>
+            <view class="price">
+                <text class="">0.3/0.5</text>
+                <text class="at-col">元/度起 </text>
+                <text class="at-col">已减0.2元</text>
+            </view>
+        </view>
+        <view>
+            <view class="distance">
+                <text>8km</text>
+            </view>
+            <view class="navigation">
+                <!-- <image class="navigation-icon" mode="widthFix" src=""></image> -->
+            </view>
+        </view>
+    </view>
+    <view class="bottom-section">
+        <view class="park-tag">
+            <view class="power-type">
+                <view class="power-item">
+                    <!-- <image src="{{dcIcon}}"></image> -->
+                    <text>空闲 5/10</text>
+                </view>
+                <view class="power-item">
+                    <!-- <image src="{{acIcon}}"></image> -->
+                    <text>空闲 7/12</text>
+                </view>
+            </view>
+        </view>
+    </view>
+</view>

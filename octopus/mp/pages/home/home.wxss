@@ -123,7 +123,9 @@
     width: fit-content;
 }
 
-.dialog-main .box-child .icon-menu .container .icon-ul .icon-li {
+.dialog-main .box-child .icon-menu .container .icon-box .icon-ul .icon-li {
+    align-items: center;
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
     width: 150rpx;
