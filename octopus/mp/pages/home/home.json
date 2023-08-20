@@ -1,5 +1,6 @@
 {
   "usingComponents": {
-    "charging-station-summary": "../../components/ChargingStationSummary/index"
+    "charging-station-summary": "../../components/ChargingStationSummary/index",
+    "tui-badge": "../../components/badge/badge"
   }
 }

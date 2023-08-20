@@ -28,6 +28,9 @@
       "selectedIconPath": "/static/image/user-active.png"
     }]
   },
+  "usingComponents": {
+    "tui-icon": "/components/icon/icon"
+  },
   "style": "v2",
   "sitemapLocation": "sitemap.json",
   "lazyCodeLoading": "requiredComponents"

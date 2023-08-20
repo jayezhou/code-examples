@@ -79,6 +79,16 @@
   padding: 0 72rpx;
 }
 
+.dialog-main .box-child .head .notification-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+
+.dialog-main .box-child .head .notification-center .tui-badge-item {
+	position: relative;
+}
+
 .dialog-main .box-child .activity {
   justify-content: space-between;
   padding: 23rpx 34rpx;
@@ -101,9 +111,9 @@
   height: 24rpx!important;
 } */
 
-.dialog-main .box-child .activity .test-h {
-  /* height: 42px!important; */
-}
+/* .dialog-main .box-child .activity .test-h {
+  height: 42px!important;
+} */
 
 .dialog-main .box-child .icon-menu .container {
     background-color: #fff;

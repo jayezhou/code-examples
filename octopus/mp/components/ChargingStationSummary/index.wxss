@@ -113,14 +113,14 @@
     word-break: break-all;
 }
 
-.charging-station-summary .station-name-tags .station-name.discount {
+.charging-station-summary .station-name-tags .station-name .discount {
     color: #e0583f;
     margin-left: 12rpx;
 }
 
-.charging-station-summary .station-name-tags .station-name.discount,.charging-station-summary .station-name-tags .station-name.un-business {
+.charging-station-summary .station-name-tags .station-name .discount, .charging-station-summary .station-name-tags .station-name .un-business {
     max-width: 280rpx;
-}
+} 
 
 .charging-station-summary .station-name-tags .station-name.discount.un-business {
     max-width: 370rpx;

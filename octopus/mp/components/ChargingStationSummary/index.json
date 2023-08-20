@@ -1,4 +1,6 @@
 {
   "component": true,
-  "usingComponents": {}
+  "usingComponents": {
+    "tui-rate": "../../components/rate/rate"
+  }  
 }

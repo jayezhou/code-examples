@@ -18,11 +18,12 @@
               <input class="search-input" confirmType="search" placeholder="输入目的地/充电站搜索" ></input>
             </view>
           </view>
-          <!-- <view bindtap="" class="notification-center">
-            <badge compid="">
-              <image class="notification-icon" src=""></image>
-            </badge>
-          </view> -->
+          <view bindtap="" class="notification-center">
+            <view class="tui-badge-item">
+              <tui-icon name="message"></tui-icon>
+              <tui-badge type="warning" absolute scaleRatio="{{0.8}}" translateX="40%" top="-6rpx">9</tui-badge>
+            </view>
+          </view>
         </view>
         <view class="map-banner-container">
           <banner compid=""></banner>
@@ -47,7 +48,7 @@
 			  <view class="icon-ul">
 				<block>
 				  <view class="icon-li">
-					  <image class="tab-bar-icon" src="../../static/image/charging-station.png"></image>
+					  <image class="tab-bar-icon" src="../../static/image/gas-station.png"></image>
 					  <text class="">电站</text>
 				  </view>
 				  <view class="icon-li">
@@ -72,7 +73,7 @@
 		  </view>
         </view>
         <view class="re-box">
-          <view class="re-title">南网推荐电站</view>
+          <view class="re-title">推荐电站</view>
           <block>
             <view>
               <view class="station-list">
