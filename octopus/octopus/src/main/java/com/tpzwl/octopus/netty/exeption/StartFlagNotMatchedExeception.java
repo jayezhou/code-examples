@@ -1,4 +1,4 @@
-package com.tpzwl.octopus.exeption;
+package com.tpzwl.octopus.netty.exeption;
 
 import io.netty.handler.codec.DecoderException;
 

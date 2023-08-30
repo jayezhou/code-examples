@@ -6,3 +6,4 @@
 16: Eng flag
 1A: Length of pack
 
+mvn spring-boot:run

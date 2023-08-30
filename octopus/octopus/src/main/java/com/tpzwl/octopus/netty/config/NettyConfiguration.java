@@ -1,4 +1,4 @@
-package com.tpzwl.octopus.config;
+package com.tpzwl.octopus.netty.config;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.ChannelOption;

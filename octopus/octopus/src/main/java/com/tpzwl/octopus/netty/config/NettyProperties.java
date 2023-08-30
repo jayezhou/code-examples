@@ -1,4 +1,4 @@
-package com.tpzwl.octopus.config;
+package com.tpzwl.octopus.netty.config;
 
 import lombok.Getter;
 import lombok.Setter;

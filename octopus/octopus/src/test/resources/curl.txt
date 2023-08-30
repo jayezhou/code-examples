@@ -1,0 +1,19 @@
+# Linux format
+
+# Signup
+curl --location --request POST 'http://localhost:8080/api/auth/signup' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "mod",
+    "email": "mod@abc.com",
+    "password": "12345678",
+    "role": ["mod"]
+}'
+
+# Signin
+curl --location --request POST 'http://localhost:8080/api/auth/signin' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "mod",
+    "password": "12345678"
+}'
