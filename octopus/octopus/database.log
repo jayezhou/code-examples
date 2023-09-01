@@ -1,0 +1,213 @@
+1693551509562|33|statement|select * from information_schema.sequences
+1693551510951|2|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693551510978|0|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693551511004|0|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693551511033|0|statement|drop table if exists refreshtoken cascade
+1693551511060|0|statement|drop table if exists roles cascade
+1693551511082|0|statement|drop table if exists user_roles cascade
+1693551511104|0|statement|drop table if exists users cascade
+1693551511127|0|statement|drop sequence if exists refreshtoken_seq
+1693551511169|14|statement|create sequence refreshtoken_seq start with 1 increment by 50
+1693551511224|47|statement|create table refreshtoken (id bigint not null, user_id bigint unique, device_type varchar(25) check (device_type in ('DEVICE_BROWSER','DEVICE_WECHAT_MINIPROGRAM','DEVICE_APP')), token varchar(255) not null unique, primary key (id))
+1693551511248|22|statement|create table roles (id serial not null, name varchar(40) check (name in ('ROLE_USER','ROLE_MODERATOR','ROLE_ADMIN')), primary key (id))
+1693551511270|21|statement|create table user_roles (role_id integer not null, user_id bigint not null, primary key (role_id, user_id))
+1693551511312|39|statement|create table users (id bigserial not null, username varchar(20), email varchar(50), password varchar(120), primary key (id), constraint UKr43af9ap4edm43mmtq01oddj6 unique (username), constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email))
+1693551511333|19|statement|alter table if exists refreshtoken add constraint FKa652xrdji49m4isx38pp4p80p foreign key (user_id) references users
+1693551511342|7|statement|alter table if exists user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles
+1693551511349|5|statement|alter table if exists user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users
+1693551631690|4|statement|select u1_0.id from users u1_0 where u1_0.username='mod' fetch first 1 rows only
+1693551631700|0|statement|select u1_0.id from users u1_0 where u1_0.email='mod@abc.com' fetch first 1 rows only
+1693551631793|2|statement|select r1_0.id,r1_0.name from roles r1_0 where r1_0.name='ROLE_MODERATOR'
+1693551631866|7|statement|insert into users (email,password,username) values ('mod@abc.com','$2a$10$7BS4d4nyV7URAxqlL4bCieBy4lNmQxcbkRqW2QaKqJM4r3Y6eikiq','mod')
+1693551631913|5|statement|insert into user_roles (user_id,role_id) values (1,2)
+1693551631916|1|commit|
+1693551647434|0|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693551647466|1|statement|select r1_0.user_id,r1_1.id,r1_1.name from user_roles r1_0 join roles r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=1
+1693551647485|0|commit|
+1693551647585|0|commit|
+1693551647595|1|statement|select nextval('refreshtoken_seq')
+1693551647624|10|statement|insert into refreshtoken (device_type,token,user_id,id) values (NULL,'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9CUk9XU0VSIiwiaWF0IjoxNjkzNTUxNjQ3LCJleHAiOjE2OTM1NTE3MDd9.jl2azDelTm5qdzdgrHWfUi5eiLXflpBzn9qlIIGUEMk',1,1)
+1693551647626|0|commit|
+1693551667951|0|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693551667968|0|statement|select r1_0.user_id,r1_1.id,r1_1.name from user_roles r1_0 join roles r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=1
+1693551667982|0|commit|
+1693552016666|5|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693552016673|6|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693552016675|1|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693552016695|19|statement|drop table if exists refreshtoken cascade
+1693552016710|13|statement|drop table if exists roles cascade
+1693552016721|10|statement|drop table if exists user_roles cascade
+1693552016742|19|statement|drop table if exists users cascade
+1693552016747|4|statement|drop sequence if exists refreshtoken_seq
+1693552044641|31|statement|select * from information_schema.sequences
+1693552045906|2|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693552045932|1|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693552045957|1|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693552045983|1|statement|drop table if exists refreshtoken cascade
+1693552046008|0|statement|drop table if exists roles cascade
+1693552046030|0|statement|drop table if exists user_roles cascade
+1693552046051|0|statement|drop table if exists users cascade
+1693552046073|1|statement|drop sequence if exists refreshtoken_seq
+1693552046109|11|statement|create sequence refreshtoken_seq start with 1 increment by 50
+1693552046161|45|statement|create table refreshtoken (id bigint not null, user_id bigint unique, device_type varchar(25) check (device_type in ('DEVICE_BROWSER','DEVICE_WECHAT_MINIPROGRAM','DEVICE_APP')), token varchar(255) not null unique, primary key (id))
+1693552046181|18|statement|create table roles (id serial not null, name varchar(40) check (name in ('ROLE_USER','ROLE_MODERATOR','ROLE_ADMIN')), primary key (id))
+1693552046198|16|statement|create table user_roles (role_id integer not null, user_id bigint not null, primary key (role_id, user_id))
+1693552046247|46|statement|create table users (id bigserial not null, username varchar(20), email varchar(50), password varchar(120), primary key (id), constraint UKr43af9ap4edm43mmtq01oddj6 unique (username), constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email))
+1693552046264|15|statement|alter table if exists refreshtoken add constraint FKa652xrdji49m4isx38pp4p80p foreign key (user_id) references users
+1693552046272|5|statement|alter table if exists user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles
+1693552046277|4|statement|alter table if exists user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users
+1693552064262|3|statement|select u1_0.id from users u1_0 where u1_0.username='mod' fetch first 1 rows only
+1693552064274|0|statement|select u1_0.id from users u1_0 where u1_0.email='mod@abc.com' fetch first 1 rows only
+1693552064365|2|statement|select r1_0.id,r1_0.name from roles r1_0 where r1_0.name='ROLE_MODERATOR'
+1693552064437|7|statement|insert into users (email,password,username) values ('mod@abc.com','$2a$10$fM8PdH3bqUrZDlpq8CjMVeb.tmcrKipgpGbSrDxFWh8HZNoXrYr4q','mod')
+1693552064478|4|statement|insert into user_roles (user_id,role_id) values (1,2)
+1693552064481|1|commit|
+1693552075517|1|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693552075541|1|statement|select r1_0.user_id,r1_1.id,r1_1.name from user_roles r1_0 join roles r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=1
+1693552075559|0|commit|
+1693552075647|0|commit|
+1693552075655|0|statement|select nextval('refreshtoken_seq')
+1693552075675|7|statement|insert into refreshtoken (device_type,token,user_id,id) values (NULL,'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9CUk9XU0VSIiwiaWF0IjoxNjkzNTUyMDc1LCJleHAiOjE2OTM1NTIxMzV9.S0JxbRoQUo_hraa0LzXPFb9isoE8rjS9eo4YYosT3o0',1,1)
+1693552075678|1|commit|
+1693552087825|0|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693552087839|1|statement|select r1_0.user_id,r1_1.id,r1_1.name from user_roles r1_0 join roles r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=1
+1693552087857|0|commit|
+1693552087874|0|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.id=1
+1693552087914|0|statement|select r1_0.id,r1_0.device_type,r1_0.token,r1_0.user_id from refreshtoken r1_0 where r1_0.user_id=1 and r1_0.device_type='DEVICE_BROWSER'
+1693552087924|0|commit|
+1693552377668|7|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693552377675|5|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693552377676|0|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693552377716|39|statement|drop table if exists refreshtoken cascade
+1693552377743|26|statement|drop table if exists roles cascade
+1693552377764|20|statement|drop table if exists user_roles cascade
+1693552377808|43|statement|drop table if exists users cascade
+1693552377821|11|statement|drop sequence if exists refreshtoken_seq
+1693552409281|27|statement|select * from information_schema.sequences
+1693552410465|1|statement|select * from information_schema.sequences
+1693552410552|30|statement|create table refreshtoken (id bigint not null, device_type varchar(25) check (device_type in ('DEVICE_BROWSER','DEVICE_WECHAT_MINIPROGRAM','DEVICE_APP')), token varchar(255) not null, user_id bigint, primary key (id))
+1693552410579|24|statement|create table roles (id serial not null, name varchar(40) check (name in ('ROLE_USER','ROLE_MODERATOR','ROLE_ADMIN')), primary key (id))
+1693552410599|18|statement|create table user_roles (user_id bigint not null, role_id integer not null, primary key (user_id, role_id))
+1693552410620|19|statement|create table users (id bigserial not null, email varchar(50), password varchar(120), username varchar(20), primary key (id))
+1693552410627|5|statement|alter table if exists refreshtoken drop constraint if exists UK_or156wbneyk8noo4jstv55ii3
+1693552410645|11|statement|alter table if exists refreshtoken add constraint UK_or156wbneyk8noo4jstv55ii3 unique (token)
+1693552410647|1|statement|alter table if exists refreshtoken drop constraint if exists UK_81otwtvdhcw7y3ipoijtlb1g3
+1693552410661|9|statement|alter table if exists refreshtoken add constraint UK_81otwtvdhcw7y3ipoijtlb1g3 unique (user_id)
+1693552410663|1|statement|alter table if exists users drop constraint if exists UKr43af9ap4edm43mmtq01oddj6
+1693552410676|10|statement|alter table if exists users add constraint UKr43af9ap4edm43mmtq01oddj6 unique (username)
+1693552410678|1|statement|alter table if exists users drop constraint if exists UK6dotkott2kjsp8vw4d0m25fb7
+1693552410690|9|statement|alter table if exists users add constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email)
+1693552410698|4|statement|create sequence refreshtoken_seq start with 1 increment by 50
+1693552410714|15|statement|alter table if exists refreshtoken add constraint FKa652xrdji49m4isx38pp4p80p foreign key (user_id) references users
+1693552410722|6|statement|alter table if exists user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles
+1693552410730|7|statement|alter table if exists user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users
+1693552466330|4|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693552466336|1|rollback|
+1693552480928|1|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693552480930|0|rollback|
+1693552538600|0|statement|select u1_0.id from users u1_0 where u1_0.username='mod' fetch first 1 rows only
+1693552538605|0|statement|select u1_0.id from users u1_0 where u1_0.email='mod@abc.com' fetch first 1 rows only
+1693552538668|2|statement|select r1_0.id,r1_0.name from roles r1_0 where r1_0.name='ROLE_MODERATOR'
+1693552577549|0|statement|select u1_0.id from users u1_0 where u1_0.username='mod' fetch first 1 rows only
+1693552577553|0|statement|select u1_0.id from users u1_0 where u1_0.email='mod@abc.com' fetch first 1 rows only
+1693552577614|0|statement|select r1_0.id,r1_0.name from roles r1_0 where r1_0.name='ROLE_MODERATOR'
+1693552577678|7|statement|insert into users (email,password,username) values ('mod@abc.com','$2a$10$I9cZz34G947.o64.NkwCfuw/fCRPbv7j1TWbFaT1UBe6hG6xRbJIy','mod')
+1693552577721|5|statement|insert into user_roles (user_id,role_id) values (1,2)
+1693552577724|1|commit|
+1693552582899|1|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693552582925|1|statement|select r1_0.user_id,r1_1.id,r1_1.name from user_roles r1_0 join roles r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=1
+1693552582942|0|commit|
+1693552583034|0|commit|
+1693552583040|0|statement|select nextval('refreshtoken_seq')
+1693552583058|8|statement|insert into refreshtoken (device_type,token,user_id,id) values (NULL,'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9CUk9XU0VSIiwiaWF0IjoxNjkzNTUyNTgzLCJleHAiOjE2OTM1NTI2NDN9.EISs5jvQqD_0qcU-kMEPJeS8-Ig2Txpu-2vvRsoOlKA',1,1)
+1693552583060|1|commit|
+1693552624297|0|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693552624302|1|statement|select r1_0.user_id,r1_1.id,r1_1.name from user_roles r1_0 join roles r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=1
+1693552624309|0|commit|
+1693552737619|0|statement|select u1_0.id,u1_0.email,u1_0.password,u1_0.username from users u1_0 where u1_0.username='mod'
+1693552737626|1|statement|select r1_0.user_id,r1_1.id,r1_1.name from user_roles r1_0 join roles r1_1 on r1_1.id=r1_0.role_id where r1_0.user_id=1
+1693552737632|0|commit|
+1693552737692|0|commit|
+1693552737695|0|statement|select nextval('refreshtoken_seq')
+1693552737701|2|statement|insert into refreshtoken (device_type,token,user_id,id) values (NULL,'eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9CUk9XU0VSIiwiaWF0IjoxNjkzNTUyNzM3LCJleHAiOjE2OTM1NTI3OTd9.2vdYbUvc2wFDTsnQvnFxwC_WplSS1otxXI50YD5km1k',1,2)
+1693552737716|0|rollback|
+1693553945148|54|statement|select * from information_schema.sequences
+1693553946462|1|statement|select * from information_schema.sequences
+1693553946631|15|statement|select * from "public"."users" where 1=0
+1693553946665|7|statement|select * from "public"."roles" where 1=0
+1693553946673|0|statement|select * from "public"."users" where 1=0
+1693554469162|28|statement|select * from information_schema.sequences
+1693554470469|5|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693554470471|1|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693554470475|2|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693554470518|40|statement|drop table if exists refreshtoken cascade
+1693554470545|26|statement|drop table if exists roles cascade
+1693554470568|21|statement|drop table if exists user_roles cascade
+1693554470612|42|statement|drop table if exists users cascade
+1693554470626|12|statement|drop sequence if exists refreshtoken_seq
+1693554470650|16|statement|create sequence refreshtoken_seq start with 1 increment by 50
+1693554470715|58|statement|create table refreshtoken (id bigint not null, user_id bigint unique, device_type varchar(25) check (device_type in ('DEVICE_BROWSER','DEVICE_WECHAT_MINIPROGRAM','DEVICE_APP')), token varchar(255) not null, primary key (id), constraint unique_user_device unique (user_id, device_type), constraint index_token unique (token))
+1693554470737|20|statement|create table roles (id serial not null, name varchar(40) check (name in ('ROLE_USER','ROLE_MODERATOR','ROLE_ADMIN')), primary key (id))
+1693554470755|16|statement|create table user_roles (role_id integer not null, user_id bigint not null, primary key (role_id, user_id))
+1693554470793|35|statement|create table users (id bigserial not null, username varchar(20), email varchar(50), password varchar(120), primary key (id), constraint UKr43af9ap4edm43mmtq01oddj6 unique (username), constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email))
+1693554470816|21|statement|alter table if exists refreshtoken add constraint FKa652xrdji49m4isx38pp4p80p foreign key (user_id) references users
+1693554470826|8|statement|alter table if exists user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles
+1693554470832|4|statement|alter table if exists user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users
+1693554916762|3|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693554916765|1|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693554916768|1|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693554916813|44|statement|drop table if exists refreshtoken cascade
+1693554916839|24|statement|drop table if exists roles cascade
+1693554916855|15|statement|drop table if exists user_roles cascade
+1693554916897|40|statement|drop table if exists users cascade
+1693554916909|11|statement|drop sequence if exists refreshtoken_seq
+1693554994805|27|statement|select * from information_schema.sequences
+1693554995976|2|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693554996003|0|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693554996029|1|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693554996054|0|statement|drop table if exists refreshtoken cascade
+1693554996077|1|statement|drop table if exists roles cascade
+1693554996098|0|statement|drop table if exists user_roles cascade
+1693554996119|0|statement|drop table if exists users cascade
+1693554996141|1|statement|drop sequence if exists refreshtoken_seq
+1693554996182|14|statement|create sequence refreshtoken_seq start with 1 increment by 50
+1693554996244|55|statement|create table refreshtoken (id bigint not null, user_id bigint unique, device_type varchar(25) check (device_type in ('DEVICE_BROWSER','DEVICE_WECHAT_MINIPROGRAM','DEVICE_APP')), token varchar(255) not null, primary key (id), constraint unique_user_device unique (user_id, device_type), constraint index_token unique (token))
+1693554996265|19|statement|create table roles (id serial not null, name varchar(40) check (name in ('ROLE_USER','ROLE_MODERATOR','ROLE_ADMIN')), primary key (id))
+1693554996282|15|statement|create table user_roles (role_id integer not null, user_id bigint not null, primary key (role_id, user_id))
+1693554996321|37|statement|create table users (id bigserial not null, username varchar(20), email varchar(50), password varchar(120), primary key (id), constraint UKr43af9ap4edm43mmtq01oddj6 unique (username), constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email))
+1693554996344|21|statement|alter table if exists refreshtoken add constraint FKa652xrdji49m4isx38pp4p80p foreign key (user_id) references users
+1693554996355|8|statement|alter table if exists user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles
+1693554996360|4|statement|alter table if exists user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users
+1693555246994|3|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693555246996|1|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693555246998|1|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693555247046|46|statement|drop table if exists refreshtoken cascade
+1693555247070|24|statement|drop table if exists roles cascade
+1693555247088|16|statement|drop table if exists user_roles cascade
+1693555247131|42|statement|drop table if exists users cascade
+1693555247143|10|statement|drop sequence if exists refreshtoken_seq
+1693555284505|25|statement|select * from information_schema.sequences
+1693555285737|2|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693555285766|0|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693555285795|0|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693555285821|0|statement|drop table if exists refreshtoken cascade
+1693555285843|0|statement|drop table if exists roles cascade
+1693555285866|0|statement|drop table if exists user_roles cascade
+1693555285889|0|statement|drop table if exists users cascade
+1693555285911|0|statement|drop sequence if exists refreshtoken_seq
+1693555285953|14|statement|create sequence refreshtoken_seq start with 1 increment by 50
+1693555286017|57|statement|create table refreshtoken (id bigint not null, user_id bigint unique, device_type varchar(25) check (device_type in ('DEVICE_BROWSER','DEVICE_WECHAT_MINIPROGRAM','DEVICE_APP')), token varchar(255) not null, primary key (id), constraint unique_user_device unique (user_id, device_type), constraint unique_token unique (token))
+1693555286038|19|statement|create table roles (id serial not null, name varchar(40) check (name in ('ROLE_USER','ROLE_MODERATOR','ROLE_ADMIN')), primary key (id))
+1693555286057|17|statement|create table user_roles (role_id integer not null, user_id bigint not null, primary key (role_id, user_id))
+1693555286095|36|statement|create table users (id bigserial not null, username varchar(20), email varchar(50), password varchar(120), primary key (id), constraint UKr43af9ap4edm43mmtq01oddj6 unique (username), constraint UK6dotkott2kjsp8vw4d0m25fb7 unique (email))
+1693555286116|18|statement|alter table if exists refreshtoken add constraint FKa652xrdji49m4isx38pp4p80p foreign key (user_id) references users
+1693555286124|7|statement|alter table if exists user_roles add constraint FKh8ciramu9cc9q3qcqiv4ue8a6 foreign key (role_id) references roles
+1693555286131|4|statement|alter table if exists user_roles add constraint FKhfh9dx7w3ubf1co1vdev94g3f foreign key (user_id) references users
+1693555362976|1|statement|alter table if exists refreshtoken drop constraint if exists FKa652xrdji49m4isx38pp4p80p
+1693555362978|1|statement|alter table if exists user_roles drop constraint if exists FKh8ciramu9cc9q3qcqiv4ue8a6
+1693555362980|1|statement|alter table if exists user_roles drop constraint if exists FKhfh9dx7w3ubf1co1vdev94g3f
+1693555363024|42|statement|drop table if exists refreshtoken cascade
+1693555363048|23|statement|drop table if exists roles cascade
+1693555363067|18|statement|drop table if exists user_roles cascade
+1693555363112|43|statement|drop table if exists users cascade
+1693555363123|10|statement|drop sequence if exists refreshtoken_seq

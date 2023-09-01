@@ -29,7 +29,8 @@ import com.tpzwl.octopus.api.payload.response.MessageResponse;
 import com.tpzwl.octopus.api.payload.response.UserInfoResponse;
 import com.tpzwl.octopus.api.security.exception.TokenRefreshException;
 import com.tpzwl.octopus.api.security.jwt.JwtUtils;
-import com.tpzwl.octopus.api.security.model.ERole;
+import com.tpzwl.octopus.api.security.model.EnumDeviceType;
+import com.tpzwl.octopus.api.security.model.EnumRole;
 import com.tpzwl.octopus.api.security.model.RefreshToken;
 import com.tpzwl.octopus.api.security.model.Role;
 import com.tpzwl.octopus.api.security.model.User;
@@ -73,19 +74,16 @@ public class AuthController {
 
     UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
 
-    ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails);
+    ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(userDetails, loginRequest.getDeviceType());
 
     List<String> roles = userDetails.getAuthorities().stream()
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
     
-    RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId());
+    RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId(), jwtCookie.getValue());
     
-    ResponseCookie jwtRefreshCookie = jwtUtils.generateRefreshJwtCookie(refreshToken.getToken());
-
     return ResponseEntity.ok()
               .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-              .header(HttpHeaders.SET_COOKIE, jwtRefreshCookie.toString())
               .body(new UserInfoResponse(userDetails.getId(),
                                          userDetails.getUsername(),
                                          userDetails.getEmail(),
@@ -111,26 +109,26 @@ public class AuthController {
     Set<Role> roles = new HashSet<>();
 
     if (strRoles == null) {
-      Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+      Role userRole = roleRepository.findByName(EnumRole.ROLE_USER)
           .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
       roles.add(userRole);
     } else {
       strRoles.forEach(role -> {
         switch (role) {
         case "admin":
-          Role adminRole = roleRepository.findByName(ERole.ROLE_ADMIN)
+          Role adminRole = roleRepository.findByName(EnumRole.ROLE_ADMIN)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(adminRole);
 
           break;
         case "mod":
-          Role modRole = roleRepository.findByName(ERole.ROLE_MODERATOR)
+          Role modRole = roleRepository.findByName(EnumRole.ROLE_MODERATOR)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(modRole);
 
           break;
         default:
-          Role userRole = roleRepository.findByName(ERole.ROLE_USER)
+          Role userRole = roleRepository.findByName(EnumRole.ROLE_USER)
               .orElseThrow(() -> new RuntimeException("Error: Role is not found."));
           roles.add(userRole);
         }
@@ -144,41 +142,41 @@ public class AuthController {
   }
 
   @PostMapping("/signout")
-  public ResponseEntity<?> logoutUser() {
+  public ResponseEntity<?> logoutUser(HttpServletRequest request) {
     Object principle = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
     if (principle.toString() != "anonymousUser") {      
       Long userId = ((UserDetailsImpl) principle).getId();
-      refreshTokenService.deleteByUserId(userId);
+      String jwt = jwtUtils.getJwtFromCookies(request);
+      EnumDeviceType deviceType = jwtUtils.getDeviceTypeFromJwtToken(jwt);
+      refreshTokenService.deleteByUserIdAndDeviceType(userId, deviceType);
     }
     
     ResponseCookie jwtCookie = jwtUtils.getCleanJwtCookie();
-    ResponseCookie jwtRefreshCookie = jwtUtils.getCleanJwtRefreshCookie();
 
     return ResponseEntity.ok()
         .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-        .header(HttpHeaders.SET_COOKIE, jwtRefreshCookie.toString())
         .body(new MessageResponse("You've been signed out!"));
   }
 
-  @PostMapping("/refreshtoken")
-  public ResponseEntity<?> refreshtoken(HttpServletRequest request) {
-    String refreshToken = jwtUtils.getJwtRefreshFromCookies(request);
-    
-    if ((refreshToken != null) && (refreshToken.length() > 0)) {
-      return refreshTokenService.findByToken(refreshToken)
-          .map(refreshTokenService::verifyExpiration)
-          .map(RefreshToken::getUser)
-          .map(user -> {
-            ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(user);
-            
-            return ResponseEntity.ok()
-                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-                .body(new MessageResponse("Token is refreshed successfully!"));
-          })
-          .orElseThrow(() -> new TokenRefreshException(refreshToken,
-              "Refresh token is not in database!"));
-    }
-    
-    return ResponseEntity.badRequest().body(new MessageResponse("Refresh Token is empty!"));
-  }
+//  @PostMapping("/refreshtoken")
+//  public ResponseEntity<?> refreshtoken(HttpServletRequest request) {
+//    String refreshToken = jwtUtils.getJwtRefreshFromCookies(request);
+//    
+//    if ((refreshToken != null) && (refreshToken.length() > 0)) {
+//      return refreshTokenService.findByToken(refreshToken)
+//          .map(refreshTokenService::verifyExpiration)
+//          .map(RefreshToken::getUser)
+//          .map(user -> {
+//            ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(user);
+//            
+//            return ResponseEntity.ok()
+//                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+//                .body(new MessageResponse("Token is refreshed successfully!"));
+//          })
+//          .orElseThrow(() -> new TokenRefreshException(refreshToken,
+//              "Refresh token is not in database!"));
+//    }
+//    
+//    return ResponseEntity.badRequest().body(new MessageResponse("Refresh Token is empty!"));
+//  }
 }

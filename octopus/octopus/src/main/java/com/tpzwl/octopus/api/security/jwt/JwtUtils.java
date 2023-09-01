@@ -13,6 +13,7 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
+import com.tpzwl.octopus.api.security.model.EnumDeviceType;
 import com.tpzwl.octopus.api.security.model.User;
 import com.tpzwl.octopus.api.security.service.UserDetailsImpl;
 
@@ -33,44 +34,35 @@ public class JwtUtils {
   @Value("${app.jwtCookieName}")
   private String jwtCookie;
   
-  @Value("${app.jwtRefreshCookieName}")
-  private String jwtRefreshCookie;
+  static final private String DEVICE_TYPE_KEY = "DEVICE_TYPE";
 
-  public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal) {
-    String jwt = generateTokenFromUsername(userPrincipal.getUsername());   
+  public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal, EnumDeviceType deviceType) {
+    String jwt = generateTokenFromUsernameAndDeviceType(userPrincipal.getUsername(), deviceType);   
     return generateCookie(jwtCookie, jwt, "/api");
   }
   
-  public ResponseCookie generateJwtCookie(User user) {
-    String jwt = generateTokenFromUsername(user.getUsername());   
+  public ResponseCookie generateJwtCookie(User user, EnumDeviceType deviceType) {
+    String jwt = generateTokenFromUsernameAndDeviceType(user.getUsername(), deviceType);   
     return generateCookie(jwtCookie, jwt, "/api");
   }
-  
-  public ResponseCookie generateRefreshJwtCookie(String refreshToken) {
-    return generateCookie(jwtRefreshCookie, refreshToken, "/api/auth/refreshtoken");
-  }
-  
+    
   public String getJwtFromCookies(HttpServletRequest request) {
     return getCookieValueByName(request, jwtCookie);
-  }
-  
-  public String getJwtRefreshFromCookies(HttpServletRequest request) {
-    return getCookieValueByName(request, jwtRefreshCookie);
   }
 
   public ResponseCookie getCleanJwtCookie() {
     ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build();
     return cookie;
   }
-  
-  public ResponseCookie getCleanJwtRefreshCookie() {
-    ResponseCookie cookie = ResponseCookie.from(jwtRefreshCookie, null).path("/api/auth/refreshtoken").build();
-    return cookie;
-  }
 
   public String getUserNameFromJwtToken(String token) {
     return Jwts.parserBuilder().setSigningKey(key()).build()
         .parseClaimsJws(token).getBody().getSubject();
+  }
+  
+  public EnumDeviceType getDeviceTypeFromJwtToken(String token) {
+	    return EnumDeviceType.valueOf((String)Jwts.parserBuilder().setSigningKey(key()).build()
+	        .parseClaimsJws(token).getBody().get(DEVICE_TYPE_KEY));
   }
 
   private Key key() {
@@ -94,9 +86,10 @@ public class JwtUtils {
     return false;
   }
   
-  public String generateTokenFromUsername(String username) {   
+  public String generateTokenFromUsernameAndDeviceType(String username, EnumDeviceType deviceType) {   
     return Jwts.builder()
         .setSubject(username)
+        .claim(DEVICE_TYPE_KEY, deviceType)
         .setIssuedAt(new Date())
         .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs))
         .signWith(key(), SignatureAlgorithm.HS256)

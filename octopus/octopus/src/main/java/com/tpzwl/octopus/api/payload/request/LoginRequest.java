@@ -1,6 +1,9 @@
 package com.tpzwl.octopus.api.payload.request;
 
+import com.tpzwl.octopus.api.security.model.EnumDeviceType;
+
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 public class LoginRequest {
 	@NotBlank
@@ -8,6 +11,9 @@ public class LoginRequest {
 
 	@NotBlank
 	private String password;
+	
+	@NotNull
+	private EnumDeviceType deviceType;
 
 	public String getUsername() {
 		return username;
@@ -24,4 +30,13 @@ public class LoginRequest {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public EnumDeviceType getDeviceType() {
+		return deviceType;
+	}
+
+	public void setDeviceType(EnumDeviceType deviceType) {
+		this.deviceType = deviceType;
+	}
+
 }

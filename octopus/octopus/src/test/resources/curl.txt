@@ -17,3 +17,8 @@ curl --location --request POST 'http://localhost:8080/api/auth/signin' \
     "username": "mod",
     "password": "12345678"
 }'
+
+# Signout
+curl --location --request POST 'http://localhost:8080/api/auth/signout' \
+--header 'Cookie: bezkoder-jwt=' \
+--data ''

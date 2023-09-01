@@ -1,15 +1,13 @@
 package com.tpzwl.octopus.api.security.service;
 
-import java.time.Instant;
 import java.util.Optional;
-import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tpzwl.octopus.api.security.exception.TokenRefreshException;
+import com.tpzwl.octopus.api.security.model.EnumDeviceType;
 import com.tpzwl.octopus.api.security.model.RefreshToken;
 import com.tpzwl.octopus.api.security.repository.RefreshTokenRepository;
 import com.tpzwl.octopus.api.security.repository.UserRepository;
@@ -29,28 +27,27 @@ public class RefreshTokenService {
     return refreshTokenRepository.findByToken(token);
   }
 
-  public RefreshToken createRefreshToken(Long userId) {
+  public RefreshToken createRefreshToken(Long userId, String token) {
     RefreshToken refreshToken = new RefreshToken();
 
     refreshToken.setUser(userRepository.findById(userId).get());
-    refreshToken.setExpiryDate(Instant.now().plusMillis(refreshTokenDurationMs));
-    refreshToken.setToken(UUID.randomUUID().toString());
+    refreshToken.setToken(token);
 
     refreshToken = refreshTokenRepository.save(refreshToken);
     return refreshToken;
   }
 
-  public RefreshToken verifyExpiration(RefreshToken token) {
-    if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
-      refreshTokenRepository.delete(token);
-      throw new TokenRefreshException(token.getToken(), "Refresh token was expired. Please make a new signin request");
-    }
-
-    return token;
-  }
+//  public RefreshToken verifyExpiration(RefreshToken token) {
+//    if (token.getExpiryDate().compareTo(Instant.now()) < 0) {
+//      refreshTokenRepository.delete(token);
+//      throw new TokenRefreshException(token.getToken(), "Refresh token was expired. Please make a new signin request");
+//    }
+//
+//    return token;
+//  }
 
   @Transactional
-  public int deleteByUserId(Long userId) {
-    return refreshTokenRepository.deleteByUser(userRepository.findById(userId).get());
+  public int deleteByUserIdAndDeviceType(Long userId, EnumDeviceType deviceType) {
+    return refreshTokenRepository.deleteByUserAndDeviceType(userRepository.findById(userId).get(), deviceType);
   }
 }
