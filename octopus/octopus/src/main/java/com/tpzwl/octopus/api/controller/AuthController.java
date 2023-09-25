@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tpzwl.octopus.api.payload.request.LoginRequest;
+import com.tpzwl.octopus.api.payload.request.RefreshTokenRequest;
 import com.tpzwl.octopus.api.payload.request.SignupRequest;
 import com.tpzwl.octopus.api.payload.response.MessageResponse;
 import com.tpzwl.octopus.api.payload.response.UserInfoResponse;
@@ -80,10 +81,13 @@ public class AuthController {
         .map(item -> item.getAuthority())
         .collect(Collectors.toList());
     
-    RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId(), jwtCookie.getValue());
+    RefreshToken refreshToken = refreshTokenService.createRefreshToken(userDetails.getId(), loginRequest.getDeviceType());
     
+    ResponseCookie jwtRefreshCookie = jwtUtils.generateRefreshJwtCookie(refreshToken.getToken());
+
     return ResponseEntity.ok()
               .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+              .header(HttpHeaders.SET_COOKIE, jwtRefreshCookie.toString())
               .body(new UserInfoResponse(userDetails.getId(),
                                          userDetails.getUsername(),
                                          userDetails.getEmail(),
@@ -158,25 +162,26 @@ public class AuthController {
         .body(new MessageResponse("You've been signed out!"));
   }
 
-//  @PostMapping("/refreshtoken")
-//  public ResponseEntity<?> refreshtoken(HttpServletRequest request) {
-//    String refreshToken = jwtUtils.getJwtRefreshFromCookies(request);
-//    
-//    if ((refreshToken != null) && (refreshToken.length() > 0)) {
-//      return refreshTokenService.findByToken(refreshToken)
-//          .map(refreshTokenService::verifyExpiration)
-//          .map(RefreshToken::getUser)
-//          .map(user -> {
-//            ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(user);
-//            
-//            return ResponseEntity.ok()
-//                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
-//                .body(new MessageResponse("Token is refreshed successfully!"));
-//          })
-//          .orElseThrow(() -> new TokenRefreshException(refreshToken,
-//              "Refresh token is not in database!"));
-//    }
-//    
-//    return ResponseEntity.badRequest().body(new MessageResponse("Refresh Token is empty!"));
-//  }
+  @PostMapping("/refreshtoken")
+  public ResponseEntity<?> refreshtoken(HttpServletRequest request, @Valid @RequestBody RefreshTokenRequest refreshTokenRequest) {
+    String refreshToken = jwtUtils.getJwtRefreshFromCookies(request);
+    
+    if ((refreshToken != null) && (refreshToken.length() > 0)) {
+      return refreshTokenService.findByToken(refreshToken)
+          .map(refreshTokenService::verifyExpiration)
+          .map(RefreshToken::getUser)
+          .map(user -> {
+            ResponseCookie jwtCookie = jwtUtils.generateJwtCookie(user, refreshTokenRequest.getDeviceType());
+            
+            return ResponseEntity.ok()
+                .header(HttpHeaders.SET_COOKIE, jwtCookie.toString())
+                .body(new MessageResponse("Token is refreshed successfully!"));
+          })
+          .orElseThrow(() -> new TokenRefreshException(refreshToken,
+              "Refresh token is not in database!"));
+    }
+    
+    return ResponseEntity.badRequest().body(new MessageResponse("Refresh Token is empty!"));
+  }
+  
 }

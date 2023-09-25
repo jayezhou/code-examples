@@ -1,5 +1,7 @@
 package com.tpzwl.octopus.api.security.model;
 
+import java.time.Instant;
+
 import jakarta.persistence.*;
 
 @Entity(name = "refreshtoken")
@@ -26,8 +28,8 @@ public class RefreshToken {
 	@Column(nullable = false, /*unique = true, */ length = 255)
 	private String token;
 
-//	@Column(nullable = false)
-//	private Instant expiryDate;
+	@Column(nullable = false)
+	private Instant expiryDate;
 
 	public RefreshToken() {
 	}
@@ -64,12 +66,12 @@ public class RefreshToken {
 		this.token = token;
 	}
 
-//	public Instant getExpiryDate() {
-//		return expiryDate;
-//	}
-//
-//	public void setExpiryDate(Instant expiryDate) {
-//		this.expiryDate = expiryDate;
-//	}
+	public Instant getExpiryDate() {
+		return expiryDate;
+	}
+
+	public void setExpiryDate(Instant expiryDate) {
+		this.expiryDate = expiryDate;
+	}
 
 }

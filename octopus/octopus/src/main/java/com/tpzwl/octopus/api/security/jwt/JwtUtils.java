@@ -34,6 +34,9 @@ public class JwtUtils {
   @Value("${app.jwtCookieName}")
   private String jwtCookie;
   
+  @Value("${app.jwtRefreshCookieName}")
+  private String jwtRefreshCookie;  
+  
   static final private String DEVICE_TYPE_KEY = "DEVICE_TYPE";
 
   public ResponseCookie generateJwtCookie(UserDetailsImpl userPrincipal, EnumDeviceType deviceType) {
@@ -45,13 +48,26 @@ public class JwtUtils {
     String jwt = generateTokenFromUsernameAndDeviceType(user.getUsername(), deviceType);   
     return generateCookie(jwtCookie, jwt, "/api");
   }
-    
+  
+  public ResponseCookie generateRefreshJwtCookie(String refreshToken) {
+    return generateCookie(jwtRefreshCookie, refreshToken, "/api/auth/refreshtoken");
+  }
+  
   public String getJwtFromCookies(HttpServletRequest request) {
     return getCookieValueByName(request, jwtCookie);
+  }
+  
+  public String getJwtRefreshFromCookies(HttpServletRequest request) {
+    return getCookieValueByName(request, jwtRefreshCookie);
   }
 
   public ResponseCookie getCleanJwtCookie() {
     ResponseCookie cookie = ResponseCookie.from(jwtCookie, null).path("/api").build();
+    return cookie;
+  }
+  
+  public ResponseCookie getCleanJwtRefreshCookie() {
+    ResponseCookie cookie = ResponseCookie.from(jwtRefreshCookie, null).path("/api/auth/refreshtoken").build();
     return cookie;
   }
 

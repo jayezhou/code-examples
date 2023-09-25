@@ -15,10 +15,16 @@ curl --location --request POST 'http://localhost:8080/api/auth/signin' \
 --header 'Content-Type: application/json' \
 --data '{
     "username": "mod",
-    "password": "12345678"
+    "password": "12345678",
+    "deviceType": "DEVICE_WECHAT_MINIPROGRAM"
 }'
+
+# Refresh token
+
 
 # Signout
 curl --location --request POST 'http://localhost:8080/api/auth/signout' \
 --header 'Cookie: bezkoder-jwt=' \
 --data ''
+
+
