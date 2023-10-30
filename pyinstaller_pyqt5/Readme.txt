@@ -12,8 +12,8 @@ pip install PyQt5-tools
 
 5、安装pyinstaller： pip install pyinstaller
 
-6、执行 pyi-makespec -w main.py 生成打包的main.spec文件
-
-7、修改main.spec文件，在包含"main.py"那个数组加入"Ui_Dialog.py"
-
-8、打包： pyinstaller main.spec 在dist目录下生成目录，压缩这个目录即可发布
+6、执行 pyinstaller -w main.py 在dist目录下生成目录，压缩这个目录即可发布。
+   如果有问题可以分步执行以下命令：
+   a、执行 pyi-makespec -w main.py 生成打包的main.spec文件
+   b、修改main.spec文件，在包含"main.py"那个数组加入"Ui_Dialog.py"
+   c、打包： pyinstaller main.spec 在dist目录下生成目录，压缩这个目录即可发布
