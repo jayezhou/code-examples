@@ -1,0 +1,80 @@
+# Linux format
+
+# Signup
+curl --location --request POST 'http://localhost:8080/be/api/auth/signup' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "mod",
+    "email": "mod@abc.com",
+    "password": "12345678",
+    "role": ["mod"]
+}'
+curl --location --request POST 'http://localhost:8080/be/api/auth/signup' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "username": "adm",
+    "email": "adm@abc.com",
+    "password": "12345678",
+    "role": ["adm"]
+}'
+
+# Signin
+curl --include --location --request POST 'http://localhost:8080/be/api/auth/signin' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "mod",
+    "password": "12345678",
+    "deviceType": "DEVICE_WECHAT_MINIPROGRAM"
+}'
+curl --include --location --request POST 'http://localhost:8080/be/api/auth/signin' \
+--header 'Content-Type: application/json' \
+--data '{
+    "username": "adm",
+    "password": "12345678",
+    "deviceType": "DEVICE_WECHAT_MINIPROGRAM"
+}'
+
+# Refresh token
+curl --include --location --request POST 'http://localhost:8080/be/api/auth/refreshtoken' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt-refresh=2748cdd6-7848-4372-8fa3-0f1d83fc9e26' \
+--data '{
+    "deviceType": "DEVICE_WECHAT_MINIPROGRAM"
+}'
+
+# Signout
+curl --include --location --request POST 'http://localhost:8080/be/api/auth/signout' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt=' \
+--data ''
+
+# Test all access
+curl --include --location --request GET 'http://localhost:8080/be/api/test/all' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1NjIxNTcsImV4cCI6MTcwNTU2MjIxN30.SGXO-H5GS5tVC7YBe_fWulxHlEmNuwVCU654t1vqdvs' \
+--data ''
+
+# Test user access
+curl --include --location --request GET 'http://localhost:8080/be/api/test/user' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1NjIxNTcsImV4cCI6MTcwNTU2MjIxN30.SGXO-H5GS5tVC7YBe_fWulxHlEmNuwVCU654t1vqdvs' \
+--data ''
+
+# Test mod access
+curl --include --location --request GET 'http://localhost:8080/be/api/test/mod' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1NjQxMzcsImV4cCI6MTcwNTY1MDUzN30.ztc3G-qPdL9Zf8xZeW8M9AoaGEV3w_OcIJFezpxkwd8' \
+--data ''
+
+# Test admin access
+curl --include --location --request GET 'http://localhost:8080/be/api/test/admin' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1NjQ3NjMsImV4cCI6MTcwNTY1MTE2M30.0gwAapTbFH-W7LeqpgD6wn-TN1QE0OTnSEFEteMJMGs' \
+--data ''
+
+# User enterpoint
+curl --include --location --request GET 'http://localhost:8080/be/api/user/all' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0iLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1NjYyMDMsImV4cCI6MTcwNTY1MjYwM30.LMx1BK-Krw2WF9-FAlohsnRP7FrRNbWOBDQZJvKSS64' \
+--data ''
+

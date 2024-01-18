@@ -1,0 +1,9 @@
+参考了 https://github.com/zbum/netty-spring-example
+
+681A000000000000000000000000000000000000000000000000000016
+68 1A 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 00 16
+68: Start flag
+16: Eng flag
+1A: Length of pack
+
+mvn spring-boot:run
