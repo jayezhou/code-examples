@@ -2,6 +2,8 @@ package com.tpzwl.be.api.security.model;
 
 import java.time.Instant;
 
+import com.tpzwl.be.api.model.User;
+
 import jakarta.persistence.*;
 
 @Entity(name = "refreshtoken")

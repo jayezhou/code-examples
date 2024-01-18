@@ -7,7 +7,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.tpzwl.be.api.security.model.User;
+import com.tpzwl.be.api.model.User;
 import com.tpzwl.be.api.security.repository.UserRepository;
 
 @Service

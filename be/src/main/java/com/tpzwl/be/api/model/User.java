@@ -1,7 +1,9 @@
-package com.tpzwl.be.api.security.model;
+package com.tpzwl.be.api.model;
 
 import java.util.HashSet;
 import java.util.Set;
+
+import com.tpzwl.be.api.security.model.Role;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;

@@ -75,6 +75,6 @@ curl --include --location --request GET 'http://localhost:8080/be/api/test/admin
 # User enterpoint
 curl --include --location --request GET 'http://localhost:8080/be/api/user/all' \
 --header 'Content-Type: application/json' \
---header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0iLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1NjYyMDMsImV4cCI6MTcwNTY1MjYwM30.LMx1BK-Krw2WF9-FAlohsnRP7FrRNbWOBDQZJvKSS64' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0iLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1Nzg0MTAsImV4cCI6MTcwNTY2NDgxMH0.dI2RB9l-VJRc6AKxL3Jd8Pom7WSMTlaHYm3AJMrYKGE' \
 --data ''
 

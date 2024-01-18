@@ -9,10 +9,10 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.tpzwl.be.api.model.User;
 import com.tpzwl.be.api.security.exception.TokenRefreshException;
 import com.tpzwl.be.api.security.model.EnumDeviceType;
 import com.tpzwl.be.api.security.model.RefreshToken;
-import com.tpzwl.be.api.security.model.User;
 import com.tpzwl.be.api.security.repository.RefreshTokenRepository;
 import com.tpzwl.be.api.security.repository.UserRepository;
 

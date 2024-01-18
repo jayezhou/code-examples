@@ -10,8 +10,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tpzwl.be.api.security.model.User;
-import com.tpzwl.be.api.security.service.UserService;
+import com.tpzwl.be.api.model.User;
+import com.tpzwl.be.api.service.UserService;
 
 //for Angular Client (withCredentials)
 //@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")

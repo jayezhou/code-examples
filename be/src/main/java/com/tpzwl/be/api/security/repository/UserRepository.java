@@ -5,7 +5,7 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.tpzwl.be.api.security.model.User;
+import com.tpzwl.be.api.model.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {

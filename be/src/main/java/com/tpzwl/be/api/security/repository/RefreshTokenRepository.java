@@ -5,9 +5,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.stereotype.Repository;
 
+import com.tpzwl.be.api.model.User;
 import com.tpzwl.be.api.security.model.EnumDeviceType;
 import com.tpzwl.be.api.security.model.RefreshToken;
-import com.tpzwl.be.api.security.model.User;
 
 @Repository
 public interface RefreshTokenRepository extends JpaRepository<RefreshToken, Long> {

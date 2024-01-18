@@ -13,8 +13,8 @@ import org.springframework.http.ResponseCookie;
 import org.springframework.stereotype.Component;
 import org.springframework.web.util.WebUtils;
 
+import com.tpzwl.be.api.model.User;
 import com.tpzwl.be.api.security.model.EnumDeviceType;
-import com.tpzwl.be.api.security.model.User;
 import com.tpzwl.be.api.security.service.UserDetailsImpl;
 
 import io.jsonwebtoken.*;

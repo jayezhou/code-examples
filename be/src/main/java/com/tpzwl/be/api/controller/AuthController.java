@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tpzwl.be.api.model.User;
 import com.tpzwl.be.api.payload.request.LoginRequest;
 import com.tpzwl.be.api.payload.request.RefreshTokenRequest;
 import com.tpzwl.be.api.payload.request.SignupRequest;
@@ -34,7 +35,6 @@ import com.tpzwl.be.api.security.model.EnumDeviceType;
 import com.tpzwl.be.api.security.model.EnumRole;
 import com.tpzwl.be.api.security.model.RefreshToken;
 import com.tpzwl.be.api.security.model.Role;
-import com.tpzwl.be.api.security.model.User;
 import com.tpzwl.be.api.security.repository.RoleRepository;
 import com.tpzwl.be.api.security.repository.UserRepository;
 import com.tpzwl.be.api.security.service.RefreshTokenService;

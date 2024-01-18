@@ -1,11 +1,11 @@
-package com.tpzwl.be.api.security.service;
+package com.tpzwl.be.api.service;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tpzwl.be.api.security.model.User;
+import com.tpzwl.be.api.model.User;
 import com.tpzwl.be.api.security.repository.UserRepository;
 
 @Service
