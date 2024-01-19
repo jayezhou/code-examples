@@ -1,4 +1,4 @@
-package com.tpzwl.be.api.security.repository;
+package com.tpzwl.be.api.repository;
 
 import java.util.Optional;
 

@@ -10,23 +10,30 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.tpzwl.be.api.model.RoleCount;
 import com.tpzwl.be.api.model.User;
-import com.tpzwl.be.api.service.UserService;
+import com.tpzwl.be.api.service.ExampleService;
 
 //for Angular Client (withCredentials)
 //@CrossOrigin(origins = "http://localhost:8081", maxAge = 3600, allowCredentials="true")
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
-@RequestMapping("/api/user")
-public class UserController {
+@RequestMapping("/api/example")
+public class ExampleController {
 
 	@Autowired
-	private UserService userService;  
+	private ExampleService exampleService;  
 	
 	@GetMapping("/all")
 	@PreAuthorize("hasRole('ADMIN')")
 	public List<User> allAccess() {
-		return userService.findAll();
+		return exampleService.findAll();
+	}
+	
+	@GetMapping("/roleCount")
+	@PreAuthorize("hasRole('ADMIN')")
+	public List<RoleCount> roleCount() {
+		return exampleService.roleCount();
 	}
 
 	@GetMapping("/{id}")

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tpzwl.be.api.model.User;
-import com.tpzwl.be.api.security.repository.UserRepository;
+import com.tpzwl.be.api.repository.UserRepository;
 
 @Service
 public class UserDetailsServiceImpl implements UserDetailsService {

@@ -29,6 +29,7 @@ import com.tpzwl.be.api.payload.request.RefreshTokenRequest;
 import com.tpzwl.be.api.payload.request.SignupRequest;
 import com.tpzwl.be.api.payload.response.MessageResponse;
 import com.tpzwl.be.api.payload.response.UserInfoResponse;
+import com.tpzwl.be.api.repository.UserRepository;
 import com.tpzwl.be.api.security.exception.TokenRefreshException;
 import com.tpzwl.be.api.security.jwt.JwtUtils;
 import com.tpzwl.be.api.security.model.EnumDeviceType;
@@ -36,7 +37,6 @@ import com.tpzwl.be.api.security.model.EnumRole;
 import com.tpzwl.be.api.security.model.RefreshToken;
 import com.tpzwl.be.api.security.model.Role;
 import com.tpzwl.be.api.security.repository.RoleRepository;
-import com.tpzwl.be.api.security.repository.UserRepository;
 import com.tpzwl.be.api.security.service.RefreshTokenService;
 import com.tpzwl.be.api.security.service.UserDetailsImpl;
 

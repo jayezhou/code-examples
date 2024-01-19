@@ -72,9 +72,15 @@ curl --include --location --request GET 'http://localhost:8080/be/api/test/admin
 --header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJtb2QiLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1NjQ3NjMsImV4cCI6MTcwNTY1MTE2M30.0gwAapTbFH-W7LeqpgD6wn-TN1QE0OTnSEFEteMJMGs' \
 --data ''
 
-# User enterpoint
-curl --include --location --request GET 'http://localhost:8080/be/api/user/all' \
+# Example enterpoint /all
+curl --include --location --request GET 'http://localhost:8080/be/api/example/all' \
 --header 'Content-Type: application/json' \
---header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0iLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU1Nzg0MTAsImV4cCI6MTcwNTY2NDgxMH0.dI2RB9l-VJRc6AKxL3Jd8Pom7WSMTlaHYm3AJMrYKGE' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0iLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU2NTU1MzAsImV4cCI6MTcwNTc0MTkzMH0.2PEstEpupe5GdUc4AlNdOitq3lxYCDqCyCdJnS7L0yc' \
+--data ''
+
+# Example enterpoint /roleCount
+curl --include --location --request GET 'http://localhost:8080/be/api/example/roleCount' \
+--header 'Content-Type: application/json' \
+--header 'Cookie: bezkoder-jwt=eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG0iLCJERVZJQ0VfVFlQRSI6IkRFVklDRV9XRUNIQVRfTUlOSVBST0dSQU0iLCJpYXQiOjE3MDU2NTU1MzAsImV4cCI6MTcwNTc0MTkzMH0.2PEstEpupe5GdUc4AlNdOitq3lxYCDqCyCdJnS7L0yc' \
 --data ''
 

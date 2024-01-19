@@ -1,7 +1,17 @@
 package com.tpzwl.be.api.security.model;
 
+import com.tpzwl.be.api.model.RoleCount;
+
 import jakarta.persistence.*;
 
+@NamedNativeQuery(name = "Role.countByRole",
+query = "SELECT r.id, r.name, COUNT(r.*) count FROM roles r GROUP BY r.id ORDER by r.id",
+resultSetMapping = "Mapping.RoleCount")
+@SqlResultSetMapping(name = "Mapping.RoleCount",
+   classes = @ConstructorResult(targetClass = RoleCount.class,
+                                columns = {@ColumnResult(name = "id"), @ColumnResult(name = "name", type=String.class), 
+                                		@ColumnResult(name = "count")
+                                           }))
 @Entity
 @Table(name = "roles")
 public class Role {
