@@ -21,10 +21,13 @@
         "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
     <typeAliases>
+        <!-- 指定一个包名起别名，将包内的 Java 类的类名作为类的类别名 -->
         <package name="sample.mybatis.xml.domain"/>
     </typeAliases>
     <mappers>
-        <mapper resource="sample/mybatis/xml/mapper/CityMapper.xml"/>
-        <mapper resource="sample/mybatis/xml/mapper/HotelMapper.xml"/>
+        <!-- <mapper resource="sample/mybatis/xml/mapper/CityMapper.xml"/> -->
+        <!-- <mapper resource="sample/mybatis/xml/mapper/HotelMapper.xml"/> -->
+        <!-- 通过 mapper 接口包加载整个包的映射文件 -->
+        <package name="sample.mybatis.xml.mapper"></package>        
     </mappers>
 </configuration>

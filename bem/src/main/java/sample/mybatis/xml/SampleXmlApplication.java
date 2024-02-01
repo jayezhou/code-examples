@@ -15,12 +15,8 @@
  */
 package sample.mybatis.xml;
 
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-
-import sample.mybatis.xml.dao.CityDao;
-import sample.mybatis.xml.mapper.HotelMapper;
 
 @SpringBootApplication
 public class SampleXmlApplication {

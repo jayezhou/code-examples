@@ -20,12 +20,14 @@
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="sample.mybatis.xml.mapper.HotelMapper">
-    <resultMap id="cityHotelMap" type="sample.mybatis.xml.domain.CityHotel">
+    <!-- <resultMap id="cityHotelMap" type="sample.mybatis.xml.domain.CityHotel"> -->
+    <resultMap id="cityHotelMap" type="CityHotel">
         <id property="id" column="id"></id>
         <result property="name" column="name"></result>
         <result property="state" column="state"></result>
         <result property="country" column="country"></result>
-        <collection property="hotels" ofType="sample.mybatis.xml.domain.Hotel">
+        <!-- <collection property="hotels" ofType="sample.mybatis.xml.domain.Hotel"> -->
+        <collection property="hotels" ofType="Hotel">
             <id column="hotel_id" property="id"></id>
             <result column="city" property="city"></result>
             <result column="hotel_name" property="name"></result>
