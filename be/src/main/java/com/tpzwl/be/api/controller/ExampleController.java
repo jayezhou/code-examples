@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tpzwl.be.api.model.RoleCount;
+import com.tpzwl.be.api.model.RoleCountResData;
 import com.tpzwl.be.api.model.User;
+import com.tpzwl.be.api.model.res.Response;
 import com.tpzwl.be.api.service.ExampleService;
 
 //for Angular Client (withCredentials)
@@ -32,8 +34,15 @@ public class ExampleController {
 	
 	@GetMapping("/roleCount")
 	@PreAuthorize("hasRole('ADMIN')")
-	public List<RoleCount> roleCount() {
-		return exampleService.roleCount();
+	public Response<RoleCountResData> roleCount() {
+		List<RoleCount> list = exampleService.roleCount();
+		Response<RoleCountResData> res = new Response<RoleCountResData>();
+		RoleCountResData data = new RoleCountResData();
+		data.setRoleCounts(list);
+		res.setCode(0L);
+		res.setData(data);
+		
+		return res;
 	}
 
 	@GetMapping("/{id}")
