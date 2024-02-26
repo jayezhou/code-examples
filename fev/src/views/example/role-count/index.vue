@@ -72,9 +72,9 @@
 
   onMounted(async () => {
     try {
-      const roleCountData = await roleCountApi();
-      console.log(roleCountData);
-      roleCounts.value = roleCountData;
+      const roleCountModelResult = await roleCountApi();
+      console.log(roleCountModelResult);
+      roleCounts.value = roleCountModelResult.roleCounts;
     } catch(e) {
       console.log((e as Error).stack);
     }

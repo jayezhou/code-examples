@@ -2,7 +2,7 @@ package com.tpzwl.be.api.model;
 
 import java.util.List;
 
-public class RoleCountResData {
+public class RoleCountResResult {
 	
 	private List<RoleCount> roleCounts;
 	

@@ -1,4 +1,6 @@
-注意: 安装以后, 你可能需要修改 src\utils\http\axios\index.ts 文件以满足自己的需求，或者你的API字段遵从Vben Admin缺省!
+注意: 
+1、安装以后, 你可能需要修改 src\utils\http\axios\index.ts 文件以满足自己的需求，或者你的API字段遵从Vben Admin缺省!
+2、如果碰到"husky - .git can't be found", 需要执行"git  init"。
 
 <div align="center"> <a href="https://github.com/anncwb/vue-vben-admin"> <img alt="VbenAdmin Logo" width="200" height="200" src="https://anncwb.github.io/anncwb/images/logo.png"> </a> <br> <br>
 

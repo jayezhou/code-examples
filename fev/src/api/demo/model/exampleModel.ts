@@ -4,7 +4,10 @@ export interface RoleCountModel {
   count: number;
 }
 
-export interface RoleCountArray {
+export interface RoleCountModelArray {
   [index: number]: RoleCountModel
 }
 
+export interface RoleCountModelResult {
+  roleCounts: Array<RoleCountModel>
+}

@@ -8,7 +8,7 @@ public class Response<T> implements Serializable {
 	
 	private Long code;
 	private String message;
-	private T data;
+	private T result;
 	
 	public Long getCode() {
 		return code;
@@ -22,11 +22,11 @@ public class Response<T> implements Serializable {
 	public void setMessage(String message) {
 		this.message = message;
 	}
-	public T getData() {
-		return data;
+	public T getResult() {
+		return result;
 	}
-	public void setData(T data) {
-		this.data = data;
+	public void setResult(T result) {
+		this.result = result;
 	}
 
 }

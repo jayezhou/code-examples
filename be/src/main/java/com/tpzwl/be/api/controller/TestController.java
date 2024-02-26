@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tpzwl.be.api.model.RoleCount;
-import com.tpzwl.be.api.model.RoleCountResData;
+import com.tpzwl.be.api.model.RoleCountResResult;
 import com.tpzwl.be.api.model.res.Response;
 import com.tpzwl.be.api.service.ExampleService;
 
@@ -35,13 +35,13 @@ public class TestController {
 //	}
 	
 	@GetMapping("/roleCount")
-	public Response<RoleCountResData> roleCount() {
+	public Response<RoleCountResResult> roleCount() {
 		List<RoleCount> list = exampleService.roleCount();
-		Response<RoleCountResData> res = new Response<RoleCountResData>();
-		RoleCountResData data = new RoleCountResData();
-		data.setRoleCounts(list);
+		Response<RoleCountResResult> res = new Response<RoleCountResResult>();
+		RoleCountResResult result = new RoleCountResResult();
+		result.setRoleCounts(list);
 		res.setCode(0L);
-		res.setData(data);
+		res.setResult(result);
 		
 		return res;
 	}
