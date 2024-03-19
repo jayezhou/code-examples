@@ -35,25 +35,30 @@ wb = load_workbook('work.xlsx')
 # 获取sheet页
 ws = wb['person_chengxiang']
 for i in range(2, 2644):  # 2是Excel表格的开始行，2644是结束行
-    name = ws.cell(row=i, column=9).value  # 9是要处理的人员名字所在列
-    driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').clear()
-    time.sleep(1)
-    driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').send_keys(name)
-    driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]/../div/button[1]').click()
-    time.sleep(1)
-    driver.find_element(By.XPATH, '//*[@title="删除"]').click()
-    time.sleep(1)
-    driver.switch_to.default_content()
-    driver.find_element(By.XPATH, '//*[@value="确定删除"]').click()
-    driver.switch_to.frame('iframe-FACE')
-    # driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').clear()
-    # time.sleep(1)
-    # driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').send_keys(name)
-    # driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]/../div/button[1]').click()
-    # time.sleep(1)
-    print('已处理：' + name)
-    ws.cell(row=i, column=12).value ='1'
-    wb.save('work.xlsx')
+    try:
+        name = ws.cell(row=i, column=9).value  # 9是要处理的人员名字所在列
+        driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').clear()
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').send_keys(name)
+        driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]/../div/button[1]').click()
+        time.sleep(1)
+        driver.find_element(By.XPATH, '//*[@title="删除"]').click()
+        time.sleep(1)
+        driver.switch_to.default_content()
+        driver.find_element(By.XPATH, '//*[@value="确定删除"]').click()
+        driver.switch_to.frame('iframe-FACE')
+        # driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').clear()
+        # time.sleep(1)
+        # driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]').send_keys(name)
+        # driver.find_element(By.XPATH, '//*[@placeholder="模糊查询"]/../div/button[1]').click()
+        # time.sleep(1)
+        print('已处理：' + name)
+        ws.cell(row=i, column=12).value ='1'  # 在第12列标记是否处理成功
+    except Exception as e:
+        ws.cell(row=i, column=12).value ='0'
+        print('Exception:', e)
+    finally:
+        wb.save('work.xlsx')
 wb.close()
 
 driver.close()
