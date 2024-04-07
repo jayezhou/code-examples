@@ -1,6 +1,7 @@
 Notice: 
-1、After installation, you may be needed to change src\utils\http\axios\index.ts file to satisfy your reqirement or your API fields compliant with Vben Admin default!
-2、If  "husky - .git can't be found" happened, need to execute "git  init".
+1. After installation, you may be needed to change src\utils\http\axios\index.ts file to satisfy your reqirement or your API fields compliant with Vben Admin default!
+2. If  "husky - .git can't be found" happened, need to execute "git  init".
+3. Example file：src\router\routes\modules\example.ts, src\views\example\role-count\index.vue, src\api\demo\example.ts
 
 <div align="center"> <a href="https://github.com/anncwb/vue-vben-admin"> <img alt="VbenAdmin Logo" width="200" height="200" src="https://anncwb.github.io/anncwb/images/logo.png"> </a> <br> <br>
 
