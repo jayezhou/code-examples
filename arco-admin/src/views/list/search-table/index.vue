@@ -235,8 +235,8 @@
           <span v-else class="circle pass"></span>
           {{ `状态.${record.status}` }}
         </template>
-        <template #operations>
-          <a-button v-permission="['admin']" type="text" size="small">
+        <template #operations="{ record }">
+          <a-button v-permission="['admin']" type="text" size="small" @click="toDetail(record.number)">
             {{ '查看' }}
           </a-button>
         </template>
@@ -254,6 +254,9 @@
   import type { TableColumnData } from '@arco-design/web-vue/es/table/interface';
   import cloneDeep from 'lodash/cloneDeep';
   import Sortable from 'sortablejs';
+  import { useRouter } from 'vue-router';
+
+  const router = useRouter();
 
   type SizeProps = 'mini' | 'small' | 'medium' | 'large';
   type Column = TableColumnData & { checked?: true };
@@ -461,6 +464,25 @@
       });
     }
   };
+
+  const toDetail = (id: number) => {
+    // Trigger router change
+    // router.push({
+    //   name: 'Detail',
+    //   params: { recordId: val }
+    // });
+
+    // router.push({
+    //   path: `detail/${val}`,
+    // });
+
+    // Trigger router change
+    router.push({
+      name: 'Detail',
+      query: { recordId: id }
+    });
+
+  };  
 
   watch(
     () => columns.value,

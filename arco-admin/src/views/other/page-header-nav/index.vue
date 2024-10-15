@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Breadcrumb :items="['其他', '页头导航']" />
-    <a-card class="general-card" :title="'查询表格'">
+    <a-card class="general-card">
       <a-page-header :show-back="false" title="ArcoDesign">
         <template #subtitle>
           <a-space>
@@ -31,7 +31,7 @@
   const current = shallowRef(CompA);
 
   const handleChange = (value) => {
-    console.log(value);
+    // console.log(value);
     if (value === 'A') {
       current.value = CompA;
     } else if (value === 'B') {

@@ -17,7 +17,20 @@ const LIST: AppRouteRecordRaw = {
       name: 'SearchTable',
       component: () => import('@/views/list/search-table/index.vue'),
       meta: {
+        // hideInMenu: true,
         locale: '查询表格',
+        requiresAuth: true,
+        roles: ['*'],
+      },
+    },
+    {
+      path: 'detail', // The midline path complies with SEO specifications
+      name: 'Detail',
+      // props: {default: true},
+      component: () => import('@/views/list/detail/index.vue'),
+      meta: {
+        hideInMenu: true,
+        locale: '详情',
         requiresAuth: true,
         roles: ['*'],
       },
