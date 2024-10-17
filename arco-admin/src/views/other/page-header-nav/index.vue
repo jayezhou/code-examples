@@ -15,7 +15,7 @@
             <a-radio value="B">Page B</a-radio>
           </a-radio-group>
         </template>
-      </a-page-header>
+      </a-page-header>  
       <KeepAlive>
         <component :is="current"></component>
       </KeepAlive>
