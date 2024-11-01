@@ -236,11 +236,33 @@
           {{ `状态.${record.status}` }}
         </template>
         <template #operations="{ record }">
-          <a-button v-permission="['admin']" type="text" size="small" @click="toDetail(record.number)">
+          <a-button v-permission="['admin']" type="text" size="small" @click="toDetail(record.id)">
             {{ '查看' }}
           </a-button>
+          <a-button @click="togglePopupOperations(record.id)">
+            <template #icon>
+              <icon-more />
+            </template>
+          </a-button>  
+          
+          <transition>
+            <a-button-group v-if="record.id === popupRowId" class="operations-button-group">
+              <a-button type="primary" @click="toDetail(record.id)">
+                {{ '打开标签页' }}
+              </a-button>
+              <a-button type="primary" @click="showDrawerOperationA(record.id)">
+                {{ '打开抽屉面板1' }}
+              </a-button>
+              <a-button type="primary" @click="showDrawerOperationB(record.id)">
+                {{ '打开抽屉面板2' }}
+              </a-button>
+            </a-button-group>
+          </transition>
         </template>
       </a-table>
+      <DrawerOperationA :id="drawerOperationAId" :visible="drawerOperationAVisible" @hide-drawer-operation-a="hideDrawerOperationA"/>
+      <DrawerOperationB :id="drawerOperationBId" :visible="drawerOperationBVisible" @hide-drawer-operation-b="hideDrawerOperationB"/>
+
     </a-card>
   </div>
 </template>
@@ -255,6 +277,8 @@
   import cloneDeep from 'lodash/cloneDeep';
   import Sortable from 'sortablejs';
   import { useRouter } from 'vue-router';
+  import DrawerOperationA from './components/drawer-operation-a.vue'
+  import DrawerOperationB from './components/drawer-operation-b.vue'
 
   const router = useRouter();
 
@@ -465,24 +489,58 @@
     }
   };
 
-  const toDetail = (id: number) => {
-    // Trigger router change
-    // router.push({
-    //   name: 'Detail',
-    //   params: { recordId: val }
-    // });
+  const popupRowId = ref('');
 
-    // router.push({
-    //   path: `detail/${val}`,
-    // });
+  const togglePopupOperations = (id: string) => {
+    if (popupRowId.value === id) {
+      hidePopup(id);  
+    } else {
+      showPopup(id); 
+    }
+  };  
 
+  const showPopup = (id: string) => {  
+    popupRowId.value = id;  
+  };    
+
+  const hidePopup = (id: string) => {  
+    popupRowId.value = '';  
+  };  
+
+  const drawerOperationAVisible = ref(false);
+  const drawerOperationAId = ref('');
+
+  const showDrawerOperationA = (id: string) => {
+    drawerOperationAVisible.value = true;
+    drawerOperationAId.value = id;
+    hidePopup(id); 
+  }
+
+  const hideDrawerOperationA = () => {
+    drawerOperationAVisible.value = false;
+  }  
+
+  const drawerOperationBVisible = ref(false);
+  const drawerOperationBId = ref('');
+
+  const showDrawerOperationB = (id: string) => {
+    drawerOperationBVisible.value = true;
+    drawerOperationBId.value = id;
+    hidePopup(id); 
+  }
+
+  const hideDrawerOperationB = () => {
+    drawerOperationBVisible.value = false;
+  }    
+
+  const toDetail = (id: string) => {
+    hidePopup(id);
     // Trigger router change
     router.push({
       name: 'Detail',
-      query: { recordId: id }
+      query: { id }
     });
-
-  };  
+  };
 
   watch(
     () => columns.value,
@@ -530,5 +588,24 @@
       margin-left: 12px;
       cursor: pointer;
     }
+  }
+  // .operations-button-group {
+  //   display: absolute;
+  // }
+  // .operations-button-group {
+  //   position: absolute;
+  //   top: 100%; /* Place below the toggle button */
+  //   display: flex;
+  //   flex-direction: column;
+  // }
+  .operations-button-group {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    z-index: 1000;
+    justify-content: flex-start;
+  }
+  .arco-btn-group {
+    align-items: unset;;
   }
 </style>

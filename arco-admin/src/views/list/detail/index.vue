@@ -3,7 +3,7 @@
     <Breadcrumb :items="['列表页', '详情']" />
     <a-card class="general-card">
       <!-- <p>传入参数：{{this.$route}}</p> -->
-      <p>记录ID：{{ this.$route.query.recordId }}</p>
+      <p>记录ID：{{ this.$route.query.id }}</p>
     </a-card>
   </div>
 </template>
