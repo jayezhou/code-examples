@@ -1,6 +1,6 @@
 ## 简介
 
-arco-admin是arco-design-pro-vue的去除国际化版本。
+arco-admin是arco-design-pro-vue的去除国际化版本。（node v18.17.1）
 
 测试账号: admin/admin user/user
 

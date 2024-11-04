@@ -1,6 +1,6 @@
 ## Introduction
 
-arco-admin based on arco-design-pro-vue, removed i18n.
+arco-admin based on arco-design-pro-vue, removed i18n. （node v18.17.1）
 
 Test account: admin/admin
 
