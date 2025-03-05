@@ -1,0 +1,7 @@
+fastapi==0.115.11
+fastapi-cli==0.0.7
+PyJWT==2.10.1
+PyMySQL==1.1.1
+SQLAlchemy==2.0.38
+sqlmodel==0.0.23
+pydantic==2.10.6
