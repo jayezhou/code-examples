@@ -28,12 +28,13 @@ app.include_router(stores.router)
 def root():
     return {"message": "Hello FastAPI!"}
 
-@app.post("/signup", response_model=UserCreate)
+@app.post("/signup", response_model=User)
 def create_user(user: UserCreate):
     db_user = service.get_user(username=user.username)
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
-    return service.create_user(user=user)
+    db_user = service.create_user(user=user)
+    return User(username=db_user.username, email=db_user.email, disabled=db_user.disabled)
 
 # Username: johndoe Password: secret
 # grant_type=password&username=johndoe&password=secret
