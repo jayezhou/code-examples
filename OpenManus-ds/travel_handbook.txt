@@ -1,0 +1,41 @@
+Travel Handbook
+
+Itinerary:
+Australia: Daintree Rainforest, Cradle Mountain, Sydney Harbor, Great Barrier Reef
+New Zealand: Milford Sound, Rotorua, Tongariro National Park, Queenstown
+Argentina and South America: Iguazu Falls, Machu Picchu, Galapagos Islands, Salar de Uyuni
+Antarctica: Wildlife Watching, Camping, Kayaking, Skiing
+
+Accommodations:
+Australia: Hostels, Hotels, On-Campus Accommodation
+New Zealand: Luxury Lodges, Back-to-Nature Camping, Homestays and B&Bs
+Argentina and South America: Patagonia Hostels, Iguazu Falls Area Cabins
+Antarctica: Cruise Ships, Tents and Camps
+
+Budget Estimates:
+Australia:
+  Flights: Varies
+  Accommodation: AUD 20-150+ per night
+  Food: AUD 15-50+ per meal
+  Activities: Varies
+New Zealand:
+  Flights: Varies
+  Accommodation: NZD 20-150+ per night
+  Food: NZD 15-40+ per meal
+  Activities: Varies
+Argentina and South America:
+  Flights: Varies
+  Accommodation: USD 10-80+ per night
+  Food: USD 5-20+ per meal
+  Activities: Varies
+Antarctica:
+  Flights: Included in packages
+  Accommodation: Varies
+  Food: Included in packages
+  Activities: Bundled in packages
+
+Food Guide:
+Australia: Try BBQs, meat pies, and Vegemite.
+New Zealand: Sample Kiwi classics like pavlova and hokey pokey ice cream.
+Argentina and South America: Enjoy empanadas, asado (barbecue), and ceviche.
+Antarctica: Most meals are provided on board expeditions.
