@@ -1,6 +1,6 @@
-CentOS Linux release 7.9.2009 (Core)
+kylin v10 aarch64
 
 yum install libSM libXrender libXext mesa-libGL
-yum install python3-devel gcc-c++ openssl-devel  # Python 3.6.8
+yum install python3-devel gcc-c++ openssl-devel  # Python 3.9
 
 gunicorn ocr:app -c gunicorn_conf.py --preload

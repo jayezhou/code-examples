@@ -16,7 +16,9 @@ app = FastAPI()
 ocr = None
 
 def process_image_ocr(image_path: str):
-    result = ocr.ocr(image_path, cls=True)
+    # result = ocr.ocr(image_path, cls=True)
+    result = ocr.ocr(image_path)
+
     logger.info(f"Result content: {result}")
 
     return [item[1][0] for item in result]
@@ -27,7 +29,8 @@ async def init_ocr():
     original_argv = sys.argv
     sys.argv = [sys.argv[0]]
     try:
-        ocr = PaddleOCR(use_angle_cls=True, use_gpu=False, lang="ch")
+        # ocr = PaddleOCR(use_angle_cls=True, use_gpu=False, lang="ch")
+        ocr = PaddleOCR(use_angle_cls=True, lang="ch", device="cpu")       
     finally:
         sys.argv = original_argv
     
